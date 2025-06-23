@@ -1,162 +1,109 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IA Protect - Verificação de Segurança</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IA Protect — Verificação de Segurança</title>
   <style>
     body {
-      background-color: #0a0a0a;
-      color: #f1f1f1;
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 0;
-    }
-
-    /* Barra superior tipo navegador */
-    .fake-bar {
-      background-color: #2b2b2b;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      padding: 0 14px;
-      color: #ccc;
-      font-size: 14px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.3);
-    }
-
-    .lock {
-      color: #4caf50;
-      margin-right: 8px;
-    }
-
-    .url {
-      color: #e0e0e0;
-    }
-
-    /* Escudo IA Protect */
-    .shield-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 40px 0 20px;
-      animation: pulse 2s infinite;
-    }
-
-    .shield-icon {
-      font-size: 52px;
-      color: #00ffc8;
-      text-shadow: 0 0 8px rgba(0,255,200,0.7);
-    }
-
-    .shield-text {
-      color: #d0f7f0;
-      font-size: 15px;
-      margin-top: 6px;
-      letter-spacing: 0.5px;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 0.85; }
-      50% { transform: scale(1.08); opacity: 1; }
-      100% { transform: scale(1); opacity: 0.85; }
-    }
-
-    .container {
-      text-align: center;
-      padding: 0 24px;
-    }
-
-    h1 {
-      font-size: 22px;
-      margin-bottom: 12px;
-      color: #ffef9f;
-    }
-
-    p {
-      font-size: 16px;
-      color: #ccc;
-      margin-bottom: 18px;
-    }
-
-    .price-box {
       background-color: #111;
-      padding: 12px;
-      border-radius: 8px;
-      margin: 20px auto;
-      display: inline-block;
-      font-size: 15px;
-      color: #00ffc8;
-      font-weight: bold;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 40px 20px;
     }
-
-    .qr-code {
-      margin: 20px 0;
-    }
-
-    .pix-code {
-      background: #1c1c1c;
-      padding: 12px;
-      border-radius: 6px;
-      word-break: break-all;
-      font-size: 14px;
-      color: #ccc;
+    .logo {
       margin-bottom: 10px;
     }
-
-    .copy-btn {
-      background-color: #00ffc8;
-      border: none;
-      color: #000;
+    .status {
+      color: #ffd700;
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+    .descricao {
+      color: #ccc;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 30px auto;
+    }
+    .preco {
+      background-color: #0f0f0f;
+      display: inline-block;
       padding: 10px 20px;
-      font-size: 14px;
-      border-radius: 5px;
+      border-radius: 8px;
+      color: #00ffc8;
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 8px rgba(0,255,200,0.3);
+    }
+    .qr {
+      width: 180px;
+      margin-top: 10px;
+    }
+    .botao {
+      background-color: #00ffc8;
+      color: #000;
+      border: none;
+      padding: 10px 18px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 6px;
+      margin-top: 15px;
       cursor: pointer;
     }
-
-    .copy-btn:hover {
-      background-color: #00ddb0;
+    .botao:hover {
+      background-color: #00e6b8;
     }
-
+    .footer-text {
+      font-size: 12px;
+      color: #888;
+      margin-top: 18px;
+    }
   </style>
 </head>
 <body>
 
-  <div class="fake-bar">
-    <span class="lock">🔒</span>
-    <span class="url">https://secureconnection-check.com/IA-Protect</span>
+  <div class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/13/Shield_green_check.svg" width="60" alt="IA Protect" />
   </div>
 
-  <div class="shield-container">
-    <div class="shield-icon">🛡️</div>
-    <div class="shield-text">IA Protect: Segurança Ativa</div>
+  <div style="color:#ccc; font-size:14px; margin-bottom:10px;">
+    IA Protect™ — Camada Avançada de Proteção
   </div>
 
-  <div class="container">
-    <h1>Verificação de Segurança em andamento...</h1>
-    <p>O navegador <strong>Google Chrome</strong> ativou automaticamente o protocolo de proteção IA Protect®.</p>
-    <p>Essa tecnologia baseada em inteligência artificial previne o comprometimento de dados durante sua navegação.</p>
+  <div class="status">
+    Verificação de Segurança em andamento...
+  </div>
 
-    <div class="price-box">
-      IA Protect operates under $0.55 USD<br>
-      Valor único em Real: R$ 2,90
-    </div>
+  <div class="descricao">
+    O navegador <strong>Google Chrome</strong> ativou automaticamente o protocolo de proteção IA Protect®. <br><br>
+    Essa tecnologia baseada em inteligência artificial previne o comprometimento de dados durante sua navegação.
+  </div>
 
-    <div class="qr-code">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?data=00020126360014BR.GOV.BCB.PIX0111qrfakepixkey...&size=180x180" alt="QR Code Pix">
-    </div>
+  <div class="preco">
+    IA Protect operates under $0.55 USD<br/>
+    Valor único em Real: R$ 2,90
+  </div>
 
-    <div class="pix-code" id="pixCode">
-      00020126360014BR.GOV.BCB.PIX0111qrfakepixkey...
-    </div>
+  <div>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=00020126360014BR.GOV.BCB.PIX0111qrfakepixkey52040000530398654039.905802BR5921IA Protect Segurança6014São Paulo-SP62070503***6304ABCD" alt="QR Code Pix" class="qr"/>
+  </div>
 
-    <button class="copy-btn" onclick="copyPixCode()">Copiar código Pix</button>
+  <button class="botao" onclick="copyPix()">Copiar código Pix</button>
+
+  <div class="footer-text">
+    Verificação processada com tecnologia IA baseada em padrões internacionais.
   </div>
 
   <script>
-    function copyPixCode() {
-      const text = document.getElementById("pixCode").innerText;
-      navigator.clipboard.writeText(text).then(() => {
+    function copyPix() {
+      const pix = "00020126360014BR.GOV.BCB.PIX0111qrfakepixkey52040000530398654039.905802BR5921IA Protect Segurança6014São Paulo-SP62070503***6304ABCD";
+      navigator.clipboard.writeText(pix).then(() => {
         alert("Código Pix copiado com sucesso.");
       });
     }
