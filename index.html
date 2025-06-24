@@ -37,15 +37,6 @@
       font-weight: bold;
     }
 
-    .pix-code {
-      font-family: monospace;
-      background-color: #eee;
-      padding: 8px;
-      border-radius: 6px;
-      margin-top: 8px;
-      display: inline-block;
-    }
-
     .qr {
       margin-top: 20px;
     }
@@ -88,11 +79,7 @@
   <p style="font-size: 13px;">(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
 
   <div class="qr">
-    <img src="https://i.imgur.com/SsScMlj.png" alt="QR Code Efi" width="220" height="220" />
-  </div>
-
-  <div class="pix-code" id="pixKey">
-    00020126580014BR.GOV.BCB.PIX01367a97187a-4475-4468-92b5-a8dc1d83aeda52040000530398654042.905802BR5923SUL INTERMEDIACOES LTDA6006ITAJAI62120508IAPROTEC630446DB
+    <img src="https://i.postimg.cc/Y2Xp9cLK/qr-efi.png" alt="QR Code Efi" width="220" height="220" />
   </div>
 
   <div>
@@ -105,8 +92,8 @@
 
   <script>
     function copiarPix() {
-      const codigo = document.getElementById("pixKey").innerText;
-      navigator.clipboard.writeText(codigo).then(() => {
+      const codigoPix = "00020126580014BR.GOV.BCB.PIX01367a97187a-4475-4468-92b5-a8dc1d83aeda52040000530398654042.905802BR5923SUL INTERMEDIACOES LTDA6006ITAJAI62120508IAPROTEC630446DB";
+      navigator.clipboard.writeText(codigoPix).then(() => {
         alert("Código Pix copiado com sucesso!");
       });
     }
