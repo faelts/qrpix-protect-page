@@ -1,174 +1,117 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IA Protect® - Conexão Segura</title>
+  <title>IA Protect® – Verificação de Segurança</title>
   <style>
     body {
       margin: 0;
-      font-family: "Segoe UI", Roboto, sans-serif;
-      background-color: #f4f6f8;
-      color: #111;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-      line-height: 2;
-    }
-
-    header {
-      width: 100%;
-      padding: 1rem;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 1rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    header img {
-      height: 18px;
-      margin-right: 8px;
-    }
-
-    main {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f9fb;
+      color: #333;
       text-align: center;
-      max-width: 640px;
-      margin-top: 3rem;
     }
-
-    .icon-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 2rem;
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
     }
-
-    .icon {
-      height: 42px;
-      width: 42px;
-      object-fit: contain;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-
-    h1 {
-      font-size: 1.6rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
+    .hidden {
+      display: none;
     }
-
-    p {
-      font-size: 1rem;
-      margin: 1.2rem 0;
-    }
-
-    .highlight {
+    header {
+      padding: 20px;
       font-weight: bold;
-      margin: 2rem 0 1rem;
     }
-
-    .qr {
-      margin: 2rem 0 1rem;
+    .main-content {
+      padding: 40px 20px;
     }
-
-    .pix-code {
-      background-color: #eeeeee;
-      padding: 1rem;
-      border-radius: 6px;
-      word-break: break-word;
+    .qrcode {
+      width: 120px;
+      margin: 20px auto;
+    }
+    .pix-box {
+      background-color: #eee;
+      padding: 15px;
+      margin: 20px auto;
+      width: fit-content;
+      border-radius: 8px;
       font-family: monospace;
-      font-size: 0.95rem;
     }
-
-    .copy-btn {
-      margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
-      background-color: #2ecc71;
-      color: #fff;
-      font-weight: bold;
+    button.copy-btn {
+      background-color: #00c853;
+      color: white;
       border: none;
-      border-radius: 4px;
+      padding: 12px 24px;
+      border-radius: 8px;
       cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
     }
-
-    .copy-btn:hover {
-      background-color: #27ae60;
+    .countdown {
+      font-size: 18px;
+      margin-top: 20px;
+      font-weight: bold;
     }
-
-    .footer-note {
-      font-size: 0.85rem;
-      color: #666;
-      margin-top: 2rem;
+    .shield {
+      margin-top: 30px;
+      font-size: 48px;
     }
   </style>
 </head>
 <body>
+  <header>
+    🔒 IA Protect®
+  </header>
 
-<header>
-  <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="cadeado" />
-  IA Protect®
-</header>
-
-<main>
-  <div class="icon-container">
-    <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="cadeado preto" class="icon" />
-    <img id="browser-logo" src="https://cdn-icons-png.flaticon.com/512/545/545705.png" alt="Navegador" class="icon" />
+  <div id="scan-animation" class="main-content">
+    <h2>Varredura em andamento...</h2>
+    <p>IA Protect está analisando a segurança da sua conexão.</p>
+    <p>Por favor, aguarde alguns instantes.</p>
   </div>
 
-  <h1>Segurança de conexão ativada</h1>
-
-  <p>O navegador <strong id="browser-name">seu navegador</strong> ativou o protocolo IA Protect — tecnologia baseada em Inteligência Artificial.</p>
-
-  <p>Para concluir a validação e garantir estabilidade e proteção durante a navegação, conclua o procedimento:</p>
-
-  <p class="highlight">IA Protect opera por menos de $0.55 USD internacionalmente<br>Valor único em Real: <strong>R$ 2,90</strong></p>
-
-  <div class="qr">
-    <img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=00020126360014BR.GOV.BCB.PIX0111qrfakepixkey" alt="QR Code Pix" />
-    <div class="pix-code" id="pix-code">00020126360014BR.GOV.BCB.PIX0111qrfakepixkey</div>
+  <div id="security-screen" class="main-content hidden fade-in">
+    <div class="shield">🛡️</div>
+    <h2>Segurança de conexão ativada</h2>
+    <p style="color: red; font-weight: bold;">🚨 Vazamento de dados em potencial detectado.</p>
+    <p>O navegador <strong>Google Chrome</strong> ativou automaticamente o protocolo <strong>IA Protect Pro</strong>, com tecnologia baseada em Inteligência Artificial.</p>
+    <p>Para concluir a proteção em tempo real e garantir estabilidade durante sua navegação, realize a autenticação abaixo:</p>
+    <br>
+    <p><strong>💳 Valor único de verificação: R$ 2,90</strong><br />(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
+    <img class="qrcode" src="https://i.imgur.com/J7Xf2Qx.png" alt="QR Code Pix" />
+    <p class="pix-box" id="pixCode">00020126360014BR.GOV.BCB.PIX0111qrfakepixkey</p>
     <button class="copy-btn" onclick="copyPix()">Copiar código Pix</button>
+    <div class="countdown" id="countdown">Tempo restante: 60 segundos...</div>
   </div>
 
-  <div class="footer-note">Este é um protocolo de segurança IA. Confirmação imediata.</div>
-</main>
+  <script>
+    // Mostrar tela de segurança após 5s
+    setTimeout(() => {
+      document.getElementById('scan-animation').classList.add('hidden');
+      document.getElementById('security-screen').classList.remove('hidden');
+    }, 5000);
 
-<script>
-  const browserLogo = document.getElementById("browser-logo");
-  const browserName = document.getElementById("browser-name");
-  const ua = navigator.userAgent.toLowerCase();
+    function copyPix() {
+      const text = document.getElementById("pixCode").innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Código Pix copiado com sucesso!");
+      });
+    }
 
-  let name = "seu navegador";
-  let logo = "https://cdn-icons-png.flaticon.com/512/545/545705.png";
-
-  if (ua.includes("chrome") && !ua.includes("edg")) {
-    name = "Google Chrome";
-    logo = "https://cdn-icons-png.flaticon.com/512/732/732228.png";
-  } else if (ua.includes("firefox")) {
-    name = "Mozilla Firefox";
-    logo = "https://cdn-icons-png.flaticon.com/512/5968/5968710.png";
-  } else if (ua.includes("edg")) {
-    name = "Microsoft Edge";
-    logo = "https://cdn-icons-png.flaticon.com/512/882/882730.png";
-  } else if (ua.includes("safari") && !ua.includes("chrome")) {
-    name = "Safari";
-    logo = "https://cdn-icons-png.flaticon.com/512/732/732217.png";
-  } else if (ua.includes("opr") || ua.includes("opera")) {
-    name = "Opera";
-    logo = "https://cdn-icons-png.flaticon.com/512/5968/5968940.png";
-  }
-
-  browserName.textContent = name;
-  browserLogo.src = logo;
-
-  function copyPix() {
-    const pixText = document.getElementById("pix-code").innerText;
-    navigator.clipboard.writeText(pixText);
-    alert("Código Pix copiado!");
-  }
-</script>
-
+    // Contagem regressiva de 60 segundos
+    let seconds = 60;
+    const countdownEl = document.getElementById("countdown");
+    const interval = setInterval(() => {
+      seconds--;
+      countdownEl.textContent = `Tempo restante: ${seconds} segundos...`;
+      if (seconds <= 0) {
+        clearInterval(interval);
+        countdownEl.textContent = "Aguardando confirmação de pagamento...";
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
