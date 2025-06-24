@@ -73,15 +73,21 @@
   <script>
     // Navegador
     const userAgent = navigator.userAgent;
-    let browser = "seu navegador";
+let browser = "seu navegador";
 
-    if (/chrome|crios|crmo/i.test(userAgent)) browser = "Google Chrome";
-    else if (/firefox|fxios/i.test(userAgent)) browser = "Mozilla Firefox";
-    else if (/safari/i.test(userAgent) && !/chrome/i.test(userAgent)) browser = "Safari";
-    else if (/edg/i.test(userAgent)) browser = "Microsoft Edge";
-    else if (/opera|opr\//i.test(userAgent)) browser = "Opera";
+if (/opr\//i.test(userAgent) || /opera/i.test(userAgent)) {
+  browser = "Opera";
+} else if (/edg\//i.test(userAgent)) {
+  browser = "Microsoft Edge";
+} else if (/chrome|crios|crmo/i.test(userAgent)) {
+  browser = "Google Chrome";
+} else if (/firefox|fxios/i.test(userAgent)) {
+  browser = "Mozilla Firefox";
+} else if (/safari/i.test(userAgent) && !/chrome|crios|crmo/i.test(userAgent)) {
+  browser = "Safari";
+}
 
-    document.getElementById("browser-name").textContent = browser;
+document.getElementById("browser-name").textContent = browser;
 
     // Cópia Pix
     function copyPix() {
