@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IA Protect® - Segurança Ativada</title>
+  <title>IA Protect® - Conexão Segura</title>
   <style>
     body {
       margin: 0;
@@ -14,7 +14,7 @@
       flex-direction: column;
       align-items: center;
       padding: 1rem;
-      line-height: 1.8;
+      line-height: 2;
     }
 
     header {
@@ -44,26 +44,25 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 1.5rem;
+      gap: 16px;
+      margin-bottom: 2rem;
     }
 
     .icon {
       height: 42px;
       width: 42px;
       object-fit: contain;
-      filter: none;
     }
 
     h1 {
       font-size: 1.6rem;
       font-weight: 600;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     p {
       font-size: 1rem;
-      margin: 1rem 0;
+      margin: 1.2rem 0;
     }
 
     .highlight {
@@ -79,7 +78,7 @@
       background-color: #eeeeee;
       padding: 1rem;
       border-radius: 6px;
-      word-break: break-all;
+      word-break: break-word;
       font-family: monospace;
       font-size: 0.95rem;
     }
@@ -102,7 +101,7 @@
     .footer-note {
       font-size: 0.85rem;
       color: #666;
-      margin-top: 1.8rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
@@ -122,6 +121,7 @@
   <h1>Segurança de conexão ativada</h1>
 
   <p>O navegador <strong id="browser-name">seu navegador</strong> ativou o protocolo IA Protect — tecnologia baseada em Inteligência Artificial.</p>
+
   <p>Para concluir a validação e garantir estabilidade e proteção durante a navegação, conclua o procedimento:</p>
 
   <p class="highlight">IA Protect opera por menos de $0.55 USD internacionalmente<br>Valor único em Real: <strong>R$ 2,90</strong></p>
@@ -138,24 +138,24 @@
 <script>
   const browserLogo = document.getElementById("browser-logo");
   const browserName = document.getElementById("browser-name");
-  const ua = navigator.userAgent;
+  const ua = navigator.userAgent.toLowerCase();
 
   let name = "seu navegador";
   let logo = "https://cdn-icons-png.flaticon.com/512/545/545705.png";
 
-  if (/chrome|chromium|crios/i.test(ua) && !/edg/i.test(ua)) {
+  if (ua.includes("chrome") && !ua.includes("edg")) {
     name = "Google Chrome";
     logo = "https://cdn-icons-png.flaticon.com/512/732/732228.png";
-  } else if (/firefox|fxios/i.test(ua)) {
+  } else if (ua.includes("firefox")) {
     name = "Mozilla Firefox";
     logo = "https://cdn-icons-png.flaticon.com/512/5968/5968710.png";
-  } else if (/edg/i.test(ua)) {
+  } else if (ua.includes("edg")) {
     name = "Microsoft Edge";
     logo = "https://cdn-icons-png.flaticon.com/512/882/882730.png";
-  } else if (/safari/i.test(ua) && !/chrome|crios|fxios/i.test(ua)) {
+  } else if (ua.includes("safari") && !ua.includes("chrome")) {
     name = "Safari";
     logo = "https://cdn-icons-png.flaticon.com/512/732/732217.png";
-  } else if (/opr\//i.test(ua) || /opera/i.test(ua)) {
+  } else if (ua.includes("opr") || ua.includes("opera")) {
     name = "Opera";
     logo = "https://cdn-icons-png.flaticon.com/512/5968/5968940.png";
   }
