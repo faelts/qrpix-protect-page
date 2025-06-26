@@ -42,7 +42,7 @@
     Número: <b id="numero"></b><br>
     Localização suspeita: <b>São Paulo – <span id="hora"></span></b><br><br>
 
-    <span id="sistemaNome"></span> ativou automaticamente o protocolo de emergência IA WhatsApp Protect,<br>
+    <b><span id="sistemaNome"></span></b> ativou automaticamente o protocolo de emergência IA WhatsApp Protect,<br>
     com escaneamento de ameaças em tempo real utilizando <b>tecnologia de Inteligência Artificial</b>.<br><br>
 
     🔐 <b>Proteção instantânea por apenas R$ 4,90</b><br>
@@ -74,10 +74,10 @@
     // Nome do navegador
     function detectarNavegador() {
       const ua = navigator.userAgent;
-      if (ua.includes("Chrome")) return "O Google Chrome";
+      if (ua.includes("Chrome") && !ua.includes("Edg") && !ua.includes("OPR")) return "O Google Chrome";
       if (ua.includes("Firefox")) return "O Mozilla Firefox";
       if (ua.includes("Safari") && !ua.includes("Chrome")) return "O Safari";
-      if (ua.includes("Opera") || ua.includes("OPR")) return "O Opera";
+      if (ua.includes("OPR") || ua.includes("Opera")) return "O Opera";
       if (ua.includes("Edg")) return "O Microsoft Edge";
       return "O sistema";
     }
@@ -106,4 +106,3 @@
   </script>
 </body>
 </html>
-
