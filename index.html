@@ -15,7 +15,7 @@
     .logo { color: #25D366; font-size: 24px; font-weight: bold; }
     .title { font-size: 20px; font-weight: bold; margin-top: 8px; }
     .alerta { color: red; font-weight: bold; margin: 20px 0 10px; }
-    .info { font-size: 16px; margin-top: 8px; line-height: 1.5; }
+    .info { font-size: 16px; margin-top: 8px; line-height: 1.6; }
     .qr-code { width: 220px; margin: 20px auto; display: block; }
     .pix-btn {
       background-color: #25D366;
@@ -44,10 +44,14 @@
     <div class="alerta">⚠️ Atividade suspeita detectada</div>
 
     <div class="info">
-      Número potencialmente clonado: <b id="numero"></b><br>
-      Localização: <b>São Paulo – <span id="hora"></span></b><br><br>
-      Sistema ativado automaticamente com varredura por IA.<br>
-      <b>Proteção única: R$ 4,90</b><br>
+      Detectamos um possível acesso indevido ao seu WhatsApp:<br>
+      Número: <b id="numero"></b><br>
+      Localização suspeita: <b>São Paulo – <span id="hora"></span></b><br><br>
+
+      O sistema ativou automaticamente o protocolo de emergência IA WhatsApp Protect,<br>
+      com escaneamento de ameaças em tempo real utilizando <b>tecnologia de Inteligência Artificial</b>.<br><br>
+
+      🔐 <b>Proteção instantânea por apenas R$ 4,90</b><br>
       <span style="color:green;">Faça a validação da proteção agora</span>
     </div>
 
@@ -70,11 +74,11 @@
       localStorage.setItem("acesso", "bloqueado");
     }
 
-    // Número aleatório
+    // Número parcialmente mascarado
     function gerarNumero() {
       const final1 = Math.floor(Math.random() * 90 + 10);
       const final2 = Math.floor(Math.random() * 90 + 10);
-      return `+55 11 9${Math.floor(1000 + Math.random()*9000)}-${final1}${final2}`;
+      return `+55 11 9XXXX-${final1}${final2}`;
     }
     document.getElementById("numero").innerText = gerarNumero();
 
@@ -94,7 +98,7 @@
       timer.innerText = `⏳ Sua autenticação expira em ${segundos} segundos.`;
       if (segundos <= 0) {
         clearInterval(intervalo);
-        timer.innerText = "⚠️ Tempo expirado. Tente novamente.";
+        timer.innerHTML = "⚠️ <span style='color:red'>Tempo expirado. Tente novamente.</span>";
         timer.style.color = "red";
       }
     }, 1000);
