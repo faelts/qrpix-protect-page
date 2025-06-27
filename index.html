@@ -48,18 +48,20 @@
       margin-top: 20px;
     }
 
-    button {
+    .hotmart__button-checkout {
       background-color: #28a745;
-      color: #fff;
+      color: #fff !important;
       font-size: 18px;
       padding: 15px 30px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       margin-top: 20px;
+      display: inline-block;
+      text-decoration: none;
     }
 
-    button:hover {
+    .hotmart__button-checkout:hover {
       background-color: #218838;
     }
 
@@ -99,9 +101,10 @@
       color: #cc0000;
     }
   </style>
+
   <script>
     function iniciarContador() {
-      let tempo = 900; // 15 minutos
+      let tempo = 900;
       const contadorEl = document.getElementById("contador");
 
       const intervalo = setInterval(() => {
@@ -119,6 +122,22 @@
 
     window.onload = iniciarContador;
   </script>
+
+  <!-- WIDGET HOTMART -->
+  <script type="text/javascript">
+    function importHotmart(){ 
+      var imported = document.createElement('script'); 
+      imported.src = 'https://static.hotmart.com/checkout/widget.min.js'; 
+      document.head.appendChild(imported); 
+      var link = document.createElement('link'); 
+      link.rel = 'stylesheet'; 
+      link.type = 'text/css'; 
+      link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css'; 
+      document.head.appendChild(link);
+    } 
+    importHotmart(); 
+  </script>
+
 </head>
 <body>
 
@@ -155,10 +174,12 @@
 
     <p class="contador">⏱️ Oferta expira em <span id="contador">15:00</span></p>
 
-    <!-- BOTÃO DE PAGAMENTO PAGSEGURO -->
-    <button onclick="window.location.href='https://pag.ae/7_Nyh7WS3'">
-      🟢 Ativar Proteção Agora – Pagar via PIX Seguro
-    </button>
+    <!-- BOTÃO DE CHECKOUT HOTMART -->
+    <a onclick="return false;" 
+       href="https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba" 
+       class="hotmart-fb hotmart__button-checkout">
+      🟢 Ativar Proteção Agora – Checkout Hotmart
+    </a>
 
     <div class="selo-container">
       <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" title="WhatsApp">
