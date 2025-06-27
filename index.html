@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>IA WhatsApp Protect – Alerta Ativado</title>
+  <title>IA WhatsApp Protect – Alerta de Segurança</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -14,20 +14,23 @@
     }
 
     h1 {
-      color: #e60000;
+      color: #cc0000;
       font-size: 24px;
-    }
-
-    h2 {
-      color: #111;
-      font-size: 20px;
-      margin-bottom: 10px;
+      font-weight: bold;
     }
 
     .alerta {
-      color: red;
+      color: #cc0000;
       font-weight: bold;
-      font-size: 18px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    .preco {
+      font-size: 20px;
+      color: #28a745;
+      font-weight: bold;
+      margin-top: 10px;
     }
 
     .beneficios {
@@ -39,9 +42,10 @@
     }
 
     .contador {
-      font-size: 20px;
-      color: #e60000;
+      font-size: 18px;
+      color: #cc0000;
       font-weight: bold;
+      margin-top: 20px;
     }
 
     button {
@@ -70,28 +74,26 @@
     }
 
     .prova-social {
-      font-size: 14px;
-      margin-top: 20px;
+      font-size: 13px;
+      margin-top: 15px;
       color: #555;
     }
 
-    .sombra {
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      padding: 20px;
-      border-radius: 12px;
-      background-color: #f9f9f9;
-      display: inline-block;
-    }
-
-    .destaque-verde {
-      color: green;
-      font-weight: bold;
-    }
-
     .rodape {
-      font-size: 12px;
+      font-size: 11px;
       margin-top: 40px;
       color: #999;
+    }
+
+    .icone-alerta {
+      font-size: 40px;
+      color: #ff0000;
+    }
+
+    .headline-verde {
+      font-size: 18px;
+      color: green;
+      font-weight: bold;
     }
   </style>
   <script>
@@ -125,15 +127,17 @@
 </head>
 <body>
 
-  <div class="sombra">
-    <img src="https://cdn-icons-png.flaticon.com/512/4086/4086679.png" alt="Escudo" width="50">
-    <h1>🚨 IA WhatsApp Protect – Alerta de Segurança Ativado</h1>
+  <div>
+    <div class="icone-alerta">🚨</div>
+    <h1>IA WhatsApp Protect – Alerta de Segurança Ativado</h1>
 
-    <p class="alerta">Atividade suspeita detectada no número +55 11 9XXXX‑4026<br>
-    Localização: São Paulo – 01:24h</p>
+    <p class="alerta">Atividade suspeita detectada no número <strong>+55 11 9XXXX‑4026</strong><br>
+    Localização: <strong>São Paulo – 01:24h</strong></p>
 
-    <h2>🛡️ Proteção imediata por apenas <span class="destaque-verde">R$ 4,90</span></h2>
-    <p>Seu WhatsApp foi marcado para ativação emergencial. O sistema IA Protect está bloqueando ameaças em tempo real.</p>
+    <p class="preco">🛡️ Proteção imediata por apenas R$ 4,90</p>
+
+    <p>Seu WhatsApp foi marcado para ativação de emergência.<br>
+    O sistema <strong>IA WhatsApp Protect</strong> está bloqueando ameaças em tempo real com tecnologia de Inteligência Artificial.</p>
 
     <div class="beneficios">
       <ul>
@@ -144,11 +148,11 @@
       </ul>
     </div>
 
-    <p class="prova-social">🟢 5.423 usuários ativaram hoje<br>“Me salvou de um golpe no WhatsApp!” — Ana, RJ</p>
+    <p class="prova-social">🔒 <strong>5.423 usuários ativaram hoje</strong><br>“Me salvou de um golpe no WhatsApp!” — Ana, RJ</p>
 
     <p class="contador">⏱️ Oferta expira em <span id="contador">15:00</span></p>
 
-    <button onclick="copiarPix()">🔐 Ativar Proteção Agora – Copiar Chave PIX</button>
+    <button onclick="copiarPix()">🟢 Ativar Proteção Agora – Copiar Chave PIX</button>
 
     <div class="selo-container">
       <img src="https://logospng.org/download/pix/logo-pix-icone-512.png" alt="Pix">
@@ -157,8 +161,10 @@
       <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Suporte">
     </div>
 
-    <p class="rodape">100% Seguro • Política de privacidade • Garantia de reembolso<br>
-    Este site não é afiliado ao WhatsApp Inc. ou Google LLC.</p>
+    <p class="rodape">
+      100% Seguro • Política de Privacidade • Garantia de Reembolso<br>
+      Este site não é afiliado ao WhatsApp Inc. nem ao Google LLC.
+    </p>
   </div>
 
 </body>
