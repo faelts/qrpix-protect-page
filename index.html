@@ -7,48 +7,70 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f8f9fa;
+      background-color: #f8f9fa;
+      color: #333;
       margin: 0;
       padding: 0;
-      text-align: center;
+      display: flex;
+      justify-content: center;
     }
+
     .container {
       max-width: 600px;
-      margin: auto;
-      padding: 40px 20px;
-      background: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: white;
+      padding: 40px 30px;
+      margin: 40px 0;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
     }
+
     h1 {
-      color: #0a7fbd;
+      color: #007bff;
+      font-size: 28px;
+      margin-bottom: 10px;
+      text-align: center;
     }
+
     p {
-      font-size: 18px;
-      color: #333;
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: center;
+      margin-bottom: 30px;
     }
-    .botao-pagamento {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 30px;
+
+    .hotmart__button-checkout {
+      display: block;
+      width: 100%;
+      background-color: #007bff;
+      color: #fff !important;
       font-size: 18px;
-      color: #fff;
-      background-color: #0a7fbd;
+      text-align: center;
+      padding: 15px 0;
       text-decoration: none;
       border-radius: 8px;
-      transition: 0.3s;
+      transition: background 0.3s ease;
+      margin-bottom: 30px;
     }
-    .botao-pagamento:hover {
-      background-color: #055f8c;
+
+    .hotmart__button-checkout:hover {
+      background-color: #0056b3;
     }
-    .feedback {
-      margin-top: 40px;
-      text-align: left;
+
+    .depoimentos {
+      margin-top: 20px;
     }
-    .feedback blockquote {
-      background: #f1f1f1;
-      border-left: 5px solid #0a7fbd;
-      margin: 15px 0;
-      padding: 10px 20px;
+
+    .depoimentos h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .depoimento {
+      background-color: #f1f1f1;
+      border-left: 4px solid #007bff;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -57,17 +79,34 @@
     <h1>IA WhatsApp Protect</h1>
     <p>Ative uma camada extra de proteção automatizada para seu WhatsApp com tecnologia de IA de última geração.</p>
 
-    <a href="https://pay.hotmart.com/P100520819" class="botao-pagamento" target="_blank">
+    <!-- Widget de checkout flutuante da Hotmart -->
+    <script type="text/javascript">
+      function importHotmart(){ 
+        var imported = document.createElement('script'); 
+        imported.src = 'https://static.hotmart.com/checkout/widget.min.js'; 
+        document.head.appendChild(imported); 
+        var link = document.createElement('link'); 
+        link.rel = 'stylesheet'; 
+        link.type = 'text/css'; 
+        link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css'; 
+        document.head.appendChild(link);
+      } 
+      importHotmart(); 
+    </script>
+
+    <a onclick="return false;" 
+       href="https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba" 
+       class="hotmart-fb hotmart__button-checkout">
       Comprar Agora por R$ 4,90
     </a>
 
-    <div class="feedback">
+    <div class="depoimentos">
       <h2>O que nossos clientes dizem:</h2>
-      <blockquote>"Minha conta do WhatsApp foi protegida em segundos. Vale cada centavo!"</blockquote>
-      <blockquote>"Tecnologia absurda, nunca vi nada parecido. Compra obrigatória."</blockquote>
-      <blockquote>"Simples, rápido e inteligente. E ainda é automático!"</blockquote>
-      <blockquote>"Sofri tentativa de golpe e a IA detectou na hora. Incrível!"</blockquote>
-      <blockquote>"Me sinto muito mais seguro agora. Parabéns pelo produto!"</blockquote>
+      <div class="depoimento">"Minha conta do WhatsApp foi protegida em segundos. Vale cada centavo!"</div>
+      <div class="depoimento">"Tecnologia absurda, nunca vi nada parecido. Compra obrigatória."</div>
+      <div class="depoimento">"Simples, rápido e inteligente. E ainda é automático!"</div>
+      <div class="depoimento">"Sofri tentativa de golpe e a IA detectou na hora. Incrível!"</div>
+      <div class="depoimento">"Me sinto muito mais seguro agora. Parabéns pelo produto!"</div>
     </div>
   </div>
 </body>
