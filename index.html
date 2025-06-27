@@ -120,7 +120,24 @@
       }, 1000);
     }
 
-    window.onload = iniciarContador;
+    window.onload = () => {
+      iniciarContador();
+
+      const ddds = ["11", "21", "31", "41", "61", "71", "81", "85", "48"];
+      const cidades = ["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Curitiba", "Brasília", "Salvador", "Recife", "Fortaleza", "Florianópolis", "Porto Alegre"];
+
+      const ddd = ddds[Math.floor(Math.random() * ddds.length)];
+      const inicio = Math.floor(9000 + Math.random() * 1000);
+      const fim = Math.floor(1000 + Math.random() * 9000);
+      const numero = `+55 ${ddd} 9${inicio}‑${fim}`;
+
+      const hora = String(Math.floor(Math.random() * 24)).padStart(2, "0") + ":" +
+                   String(Math.floor(Math.random() * 60)).padStart(2, "0") + "h";
+      const cidade = cidades[Math.floor(Math.random() * cidades.length)];
+
+      document.getElementById("numero").textContent = numero;
+      document.getElementById("cidadehora").textContent = `${cidade} – ${hora}`;
+    };
   </script>
 
   <!-- WIDGET HOTMART -->
@@ -145,8 +162,10 @@
     <div class="icone-alerta">🚨</div>
     <h1><strong>IA WhatsApp Protect</strong> – Alerta de Segurança Ativado</h1>
 
-    <p class="alerta">Atividade suspeita detectada no número <strong>+55 11 9XXXX‑4026</strong><br>
-    Localização: <strong>São Paulo – 01:24h</strong></p>
+    <p class="alerta">
+      Atividade suspeita detectada no número <strong id="numero">+55 11 9XXXX‑4026</strong><br>
+      Localização: <strong id="cidadehora">São Paulo – 01:24h</strong>
+    </p>
 
     <p class="preco">🛡️ Proteção imediata por apenas R$ 4,90</p>
 
