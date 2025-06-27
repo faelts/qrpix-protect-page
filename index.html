@@ -117,14 +117,6 @@
       }, 1000);
     }
 
-    function copiarPix() {
-      const chave = "chavepix@protege.com";
-      navigator.clipboard.writeText(chave).then(() => {
-        alert("✅ Chave PIX copiada com sucesso!");
-        console.log("BOTAO_PIX_CLICADO");
-      });
-    }
-
     window.onload = iniciarContador;
   </script>
 </head>
@@ -163,12 +155,13 @@
 
     <p class="contador">⏱️ Oferta expira em <span id="contador">15:00</span></p>
 
-    <button onclick="copiarPix()">🟢 Ativar Proteção Agora – Copiar Chave PIX</button>
+    <!-- BOTÃO DE PAGAMENTO PAGSEGURO -->
+    <button onclick="window.location.href='https://pag.ae/7_Nyh7WS3'">
+      🟢 Ativar Proteção Agora – Pagar via PIX Seguro
+    </button>
 
     <div class="selo-container">
-      <!-- WhatsApp transparente -->
       <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" title="WhatsApp">
-      <!-- Pix -->
       <img src="https://logospng.org/download/pix/logo-pix-icone-512.png" alt="Pix" title="Pagamento via Pix">
     </div>
 
