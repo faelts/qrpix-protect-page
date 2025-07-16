@@ -108,7 +108,7 @@
     <li>✅ Reembolso imediato se sua conta for comprometida</li>
   </ul>
 
-  <a class="hotmart__button-checkout" href="https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba">
+  <a class="hotmart__button-checkout" href="https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba" target="_blank">
     🔐 ATIVAR PROTEÇÃO AGORA
   </a>
 
@@ -117,9 +117,24 @@
   </div>
 
   <script>
-    // Localização e hora
-    document.getElementById("numero").textContent = "+55 85 99877-****";
-    document.getElementById("local").textContent = "Salvador";
+    // Gerador de número aleatório
+    function gerarNumero() {
+      let ddd = ['11','21','31','41','51','61','71','81','85','91'];
+      let rddd = ddd[Math.floor(Math.random() * ddd.length)];
+      let n1 = Math.floor(90000 + Math.random() * 9999);
+      return `+55 ${rddd} ${n1.toString().slice(0, 5)}-****`;
+    }
+
+    // Gerador de cidade aleatória
+    function gerarCidade() {
+      let cidades = ['São Paulo', 'Rio de Janeiro', 'Belo Horizonte', 'Curitiba', 'Salvador', 'Recife', 'Fortaleza', 'Brasília', 'Porto Alegre', 'Belém'];
+      return cidades[Math.floor(Math.random() * cidades.length)];
+    }
+
+    document.getElementById("numero").textContent = gerarNumero();
+    document.getElementById("local").textContent = gerarCidade();
+
+    // Hora atual
     const data = new Date();
     document.getElementById("hora").textContent = data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
