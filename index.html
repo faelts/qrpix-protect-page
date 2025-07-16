@@ -22,7 +22,7 @@
     .subheadline {
       font-size: 22px;
       color: #ffffff;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
 
     .alerta {
@@ -57,7 +57,7 @@
       font-weight: bold;
       text-decoration: none;
       border-radius: 10px;
-      margin-top: 40px;
+      margin-top: 30px;
       transition: background-color 0.3s ease;
       box-shadow: 0 0 12px rgba(255, 0, 0, 0.4);
     }
@@ -71,8 +71,38 @@
       font-size: 12px;
       color: #666;
     }
+
+    #timer {
+      font-size: 18px;
+      margin-top: 20px;
+      color: #ffcc00;
+    }
+
+    .ia-info {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 25px;
+      font-style: italic;
+    }
   </style>
   <script>
+    // FUNÇÃO PARA VERIFICAR MODO DEV
+    function isModoDev() {
+      return new URLSearchParams(window.location.search).get('dev') === 'true';
+    }
+
+    // BLOQUEIO DE ACESSO NORMAL
+    if (!isModoDev()) {
+      if (localStorage.getItem('visited') === 'true') {
+        document.write("<h2 style='color:white;text-align:center;margin-top:100px;'>Página indisponível</h2>");
+        throw new Error("Execução interrompida.");
+      } else {
+        localStorage.setItem('visited', 'true');
+        window.history.replaceState(null, '', '/');
+      }
+    }
+
+    // GERAÇÃO DE NÚMERO E CIDADE
     const gerarNumero = () => {
       const ddd = Math.floor(Math.random() * (99 - 11 + 1)) + 11;
       const prefixo = Math.floor(90000 + Math.random() * 9999);
@@ -86,10 +116,25 @@
     window.onload = () => {
       document.getElementById("numero").innerText = gerarNumero();
       document.getElementById("cidade").innerText = gerarCidade();
+      iniciarTimer(90);
     }
 
+    // CLIQUE
     function contarClique() {
-      console.log("Botão clicado para proteção.");
+      console.log("Botão clicado.");
+    }
+
+    // TIMER
+    function iniciarTimer(segundos) {
+      const timerEl = document.getElementById("timer");
+      const interval = setInterval(() => {
+        segundos--;
+        timerEl.innerText = `⏳ Tempo restante: ${segundos}s`;
+        if (segundos <= 0) {
+          clearInterval(interval);
+          timerEl.innerText = "⏱️ Tempo expirado — risco iminente!";
+        }
+      }, 1000);
     }
   </script>
 </head>
@@ -97,12 +142,18 @@
   <h1>⚠️ Alerta de Risco</h1>
   <div class="subheadline">Seu WhatsApp pode ser <strong>DESATIVADO</strong> a qualquer momento!</div>
 
+  <div class="ia-info">
+    Ativado automaticamente pelo protocolo IA WhatsApp Protect — sistema autônomo de inteligência artificial.
+  </div>
+
   <div class="alerta">
     Detectamos atividade suspeita no número:  
     <br><strong id="numero"></strong>  
     <div class="local-info">📍 Localização aproximada: <span id="cidade"></span></div>
     <div class="preco">🛡️ Proteção Urgente Requerida</div>
   </div>
+
+  <div id="timer">⏳ Tempo restante: 90s</div>
 
   <a class="botao" href="https://pay.hotmart.com/P100520919B" onclick="contarClique()" target="_blank">
     ⚠️ IMPEDIR DESATIVAÇÃO
