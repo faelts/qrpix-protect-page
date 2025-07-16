@@ -7,23 +7,33 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #fff;
+      background-color: #f8f9fa;
       margin: 0;
       padding: 0 20px;
       text-align: center;
       color: #111;
     }
 
-    h1 {
-      font-size: 24px;
+    .headline {
       margin-top: 40px;
       color: #c00;
       font-weight: bold;
     }
 
+    .headline h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .headline h2 {
+      font-size: 22px;
+      color: #d00;
+      margin-top: 0;
+    }
+
     .alerta {
       font-size: 16px;
-      color: #c00;
+      color: #b30000;
       margin-top: 15px;
       font-weight: bold;
     }
@@ -33,7 +43,7 @@
       color: #856404;
       border: 1px solid #ffeeba;
       padding: 15px;
-      margin: 20px auto;
+      margin: 25px auto;
       max-width: 600px;
       font-size: 15px;
     }
@@ -42,7 +52,7 @@
       font-size: 18px;
       font-weight: bold;
       color: #28a745;
-      margin-top: 20px;
+      margin-top: 25px;
     }
 
     .beneficios {
@@ -68,7 +78,7 @@
       font-size: 16px;
       font-weight: bold;
       border-radius: 8px;
-      margin-top: 20px;
+      margin-top: 25px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
@@ -85,7 +95,10 @@
 </head>
 <body>
 
-  <h1>⚠️ Alerta de Risco: Seu WhatsApp pode ser DESATIVADO!</h1>
+  <div class="headline">
+    <h1>⚠️ ALERTA DE RISCO</h1>
+    <h2>Seu WhatsApp pode ser DESATIVADO!</h2>
+  </div>
 
   <p class="alerta">
     Atividade suspeita detectada: <span id="numero"></span><br />
@@ -117,7 +130,7 @@
   </div>
 
   <script>
-    // Gerador de número aleatório
+    // Número aleatório
     function gerarNumero() {
       let ddd = ['11','21','31','41','51','61','71','81','85','91'];
       let rddd = ddd[Math.floor(Math.random() * ddd.length)];
@@ -125,7 +138,7 @@
       return `+55 ${rddd} ${n1.toString().slice(0, 5)}-****`;
     }
 
-    // Gerador de cidade aleatória
+    // Cidades aleatórias
     function gerarCidade() {
       let cidades = ['São Paulo', 'Rio de Janeiro', 'Belo Horizonte', 'Curitiba', 'Salvador', 'Recife', 'Fortaleza', 'Brasília', 'Porto Alegre', 'Belém'];
       return cidades[Math.floor(Math.random() * cidades.length)];
@@ -137,11 +150,6 @@
     // Hora atual
     const data = new Date();
     document.getElementById("hora").textContent = data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-
-    // Redirecionamento automático
-    setTimeout(function() {
-      window.location.href = "https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba";
-    }, 15000); // 15 segundos
 
     // Contador regressivo
     let tempo = 14 * 60 + 59;
