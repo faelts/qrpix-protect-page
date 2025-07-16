@@ -1,274 +1,144 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>IA WhatsApp Protect – Alerta de Segurança</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f8f8f8;
-      margin: 0;
-      text-align: center;
-      color: #222;
-    }
-
-    header {
       background-color: #fff;
-      border-bottom: 1px solid #ccc;
-      padding: 20px 10px;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-
-    header .top-button {
-      background-color: #28a745;
-      color: #fff;
-      font-size: 16px;
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
+      margin: 0;
+      padding: 0 20px;
+      text-align: center;
+      color: #111;
     }
 
     h1 {
-      color: #111;
       font-size: 24px;
-      margin: 10px 0;
+      margin-top: 40px;
+      color: #c00;
+      font-weight: bold;
     }
 
     .alerta {
-      color: #cc0000;
-      font-weight: bold;
       font-size: 16px;
-      margin-bottom: 15px;
-    }
-
-    .preco {
-      font-size: 20px;
-      color: #28a745;
+      color: #c00;
+      margin-top: 15px;
       font-weight: bold;
-      margin: 15px 0;
-    }
-
-    .frase-impacto {
-      color: #cc0000;
-      font-weight: bold;
-      font-size: 18px;
-      margin-top: 10px;
     }
 
     .urgente {
-      color: red;
-      font-size: 16px;
+      background-color: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeeba;
+      padding: 15px;
+      margin: 20px auto;
+      max-width: 600px;
+      font-size: 15px;
+    }
+
+    .preco {
+      font-size: 18px;
+      font-weight: bold;
+      color: #28a745;
+      margin-top: 20px;
+    }
+
+    .beneficios {
+      list-style: none;
+      padding: 0;
+      margin: 25px auto;
+      max-width: 600px;
+      font-size: 15px;
+      color: #111;
+      text-align: left;
+    }
+
+    .beneficios li {
       margin-bottom: 10px;
     }
 
-    .beneficios, .feedbacks {
-      text-align: left;
+    .hotmart__button-checkout {
       display: inline-block;
-      margin: 20px auto;
-      font-size: 15px;
-      line-height: 1.6;
-      background-color: #fff;
-      padding: 20px;
+      background-color: #28a745;
+      color: white;
+      padding: 15px 25px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin-top: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
     .contador {
-      font-size: 16px;
-      color: #cc0000;
-      font-weight: bold;
-      margin: 30px 0 10px;
-    }
-
-    .hotmart__button-checkout {
-      background-color: #28a745;
-      color: #fff !important;
-      font-size: 18px;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
       margin-top: 20px;
-      display: inline-block;
-      text-decoration: none;
       font-weight: bold;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      color: #c00;
     }
 
-    .hotmart__button-checkout:hover {
-      background-color: #1e7e34;
-    }
-
-    .selo-container {
-      margin-top: 30px;
-    }
-
-    .selo-container img {
-      height: 32px;
-      margin: 8px;
-      vertical-align: middle;
-    }
-
-    .prova-social {
-      font-size: 14px;
-      margin-top: 25px;
-      color: #333;
-    }
-
-    .rodape {
-      font-size: 11px;
-      margin-top: 40px;
-      color: #999;
-    }
-
-    .icone-alerta {
-      font-size: 40px;
-      color: #cc0000;
-      margin-top: 20px;
-    }
-
-    .barra-fixa {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #28a745;
-      color: #fff;
+    #contador {
       font-weight: bold;
-      padding: 10px;
-      z-index: 999;
-    }
-
-    .barra-fixa a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 16px;
     }
   </style>
-
-  <script>
-    function iniciarContador() {
-      let tempo = 900;
-      const contadorEl = document.getElementById("contador");
-
-      const intervalo = setInterval(() => {
-        const minutos = String(Math.floor(tempo / 60)).padStart(2, '0');
-        const segundos = String(tempo % 60).padStart(2, '0');
-        contadorEl.textContent = `${minutos}:${segundos}`;
-        tempo--;
-
-        if (tempo < 0) {
-          clearInterval(intervalo);
-          contadorEl.textContent = "Expirado";
-        }
-      }, 1000);
-    }
-
-    window.onload = () => {
-      iniciarContador();
-
-      const ddds = ["11", "21", "31", "41", "61", "71", "81", "85", "48"];
-      const cidades = ["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Curitiba", "Brasília", "Salvador", "Recife", "Fortaleza", "Florianópolis", "Porto Alegre"];
-
-      const ddd = ddds[Math.floor(Math.random() * ddds.length)];
-      const inicio = Math.floor(9000 + Math.random() * 1000);
-      const fim = "****";
-      const numero = `+55 ${ddd} 9${inicio}-${fim}`;
-
-      const hora = String(Math.floor(Math.random() * 24)).padStart(2, "0") + ":" +
-                   String(Math.floor(Math.random() * 60)).padStart(2, "0") + "h";
-      const cidade = cidades[Math.floor(Math.random() * cidades.length)];
-
-      document.getElementById("numero").textContent = numero;
-      document.getElementById("cidadehora").textContent = `${cidade} – ${hora}`;
-    };
-  </script>
-
-  <script type="text/javascript">
-    function importHotmart(){ 
-      var imported = document.createElement('script'); 
-      imported.src = 'https://static.hotmart.com/checkout/widget.min.js'; 
-      document.head.appendChild(imported); 
-      var link = document.createElement('link'); 
-      link.rel = 'stylesheet'; 
-      link.type = 'text/css'; 
-      link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css'; 
-      document.head.appendChild(link);
-    } 
-    importHotmart(); 
-  </script>
 </head>
-
 <body>
 
-  <header>
-    <a href="https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba" class="top-button">🛡️ Ativar Proteção Agora</a>
-  </header>
-
-  <div class="icone-alerta">🚨</div>
-  <h1><strong>IA WhatsApp Protect</strong> – Alerta de Segurança Ativado</h1>
-
-  <p class="frase-impacto">⚠️ Seu WhatsApp pode ser desativado!</p>
+  <h1>⚠️ Alerta de Risco: Seu WhatsApp pode ser DESATIVADO!</h1>
 
   <p class="alerta">
-    Atividade suspeita detectada no número <strong id="numero">+55 11 9XXXX‑4026</strong><br>
-    Localização: <strong id="cidadehora">São Paulo – 01:24h</strong>
+    Atividade suspeita detectada: <span id="numero"></span><br />
+    Localização: <span id="local"></span> – <span id="hora"></span>
   </p>
 
-  <p class="preco">✅ Proteção imediata por apenas R$ 4,90</p>
-
-  <p class="urgente">Último aviso antes do bloqueio total do WhatsApp.</p>
-
-  <p>
-    Alguém pode estar tentando clonar seu número ou acessar seus dados.
-    Não proteja depois — <strong>ative agora</strong> para garantir:
-  </p>
-
-  <div class="beneficios">
-    <ul>
-      <li>✔️ Escaneamento IA 24h contra ameaças e golpes</li>
-      <li>✔️ Bloqueio preventivo de invasores em tempo real</li>
-      <li>✔️ Reembolso imediato se sua conta for comprometida</li>
-      <li>✔️ Suporte emergencial com prioridade total</li>
-    </ul>
+  <div class="urgente">
+    🔴 Golpistas podem estar clonando seu número agora.<br />
+    ⛔ Sem proteção, sua conta pode ser invadida e bloqueada.
   </div>
 
-  <p class="prova-social">🔒 5.423 usuários ativaram hoje</p>
-
-  <div class="feedbacks">
-    <p>🗣️ “Me salvou de um golpe no WhatsApp!” — <strong>Ana, RJ</strong></p>
-    <p>🗣️ “Simples, rápido e me deixou muito mais tranquilo.” — <strong>Eduardo, SP</strong></p>
-    <p>🗣️ “Achei que fosse vírus, mas era proteção real. Aprovado.” — <strong>Sandra, DF</strong></p>
-    <p>🗣️ “Recebi o alerta, paguei R$ 4,90 e fui protegido na hora.” — <strong>Marcos, MG</strong></p>
-    <p>🗣️ “Sistema inteligente, seguro e barato. Obrigado!” — <strong>Lívia, BA</strong></p>
+  <div class="preco">
+    🛡️ Proteja-se agora por apenas <strong>R$ 4,90</strong>
   </div>
 
-  <p class="contador">⏱️ Oferta expira em <span id="contador">15:00</span></p>
+  <ul class="beneficios">
+    <li>✅ Escaneamento 24h com IA contra ameaças e golpes</li>
+    <li>✅ Bloqueio preventivo de invasores em tempo real</li>
+    <li>✅ Suporte emergencial com prioridade total</li>
+    <li>✅ Reembolso imediato se sua conta for comprometida</li>
+  </ul>
 
-  <a href="https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba" 
-     class="hotmart-fb hotmart__button-checkout">
-    ✅ Ativar Proteção Agora – Checkout Hotmart
+  <a class="hotmart__button-checkout" href="https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba">
+    🔐 ATIVAR PROTEÇÃO AGORA
   </a>
 
-  <div class="selo-container">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-    <img src="https://logospng.org/download/pix/logo-pix-icone-512.png" alt="Pix">
-    <img src="https://cdn-icons-png.flaticon.com/512/890/890173.png" alt="Cadeado"> 
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Hotmart-logo.png/600px-Hotmart-logo.png" alt="Hotmart" height="28">
+  <div class="contador">
+    ⏰ Oferta expira em <span id="contador">14:59</span>
   </div>
 
-  <p class="rodape">
-    🔒 Pagamento 100% Seguro • Garantia de Reembolso em 30 dias<br>
-    Política de Privacidade • Este site não é afiliado ao WhatsApp Inc. nem ao Google LLC.
-  </p>
+  <script>
+    // Localização e hora
+    document.getElementById("numero").textContent = "+55 85 99877-****";
+    document.getElementById("local").textContent = "Salvador";
+    const data = new Date();
+    document.getElementById("hora").textContent = data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
-  <div class="barra-fixa">
-    <a href="https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba">🛡️ Ativar Proteção Agora – Checkout Hotmart</a>
-  </div>
+    // Redirecionamento automático
+    setTimeout(function() {
+      window.location.href = "https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba";
+    }, 15000); // 15 segundos
+
+    // Contador regressivo
+    let tempo = 14 * 60 + 59;
+    const contador = document.getElementById("contador");
+    setInterval(() => {
+      if (tempo <= 0) return;
+      tempo--;
+      const min = Math.floor(tempo / 60).toString().padStart(2, "0");
+      const seg = (tempo % 60).toString().padStart(2, "0");
+      contador.textContent = `${min}:${seg}`;
+    }, 1000);
+  </script>
 
 </body>
 </html>
