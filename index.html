@@ -48,6 +48,22 @@
       margin-top: 20px;
     }
 
+    .barra-progresso {
+      width: 100%;
+      background-color: #eee;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 10px;
+      height: 14px;
+    }
+
+    .progresso {
+      height: 14px;
+      background-color: #28a745;
+      width: 100%;
+      transition: width 1s linear;
+    }
+
     .hotmart__button-checkout {
       background-color: #28a745;
       color: #fff !important;
@@ -59,10 +75,17 @@
       margin-top: 20px;
       display: inline-block;
       text-decoration: none;
+      animation: pulse 1.5s infinite;
     }
 
     .hotmart__button-checkout:hover {
       background-color: #218838;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.07); }
+      100% { transform: scale(1); }
     }
 
     .selo-container {
@@ -106,12 +129,16 @@
     function iniciarContador() {
       let tempo = 900;
       const contadorEl = document.getElementById("contador");
+      const progressoEl = document.getElementById("progresso");
 
       const intervalo = setInterval(() => {
         const minutos = String(Math.floor(tempo / 60)).padStart(2, '0');
         const segundos = String(tempo % 60).padStart(2, '0');
         contadorEl.textContent = `${minutos}:${segundos}`;
         tempo--;
+
+        const porcentagem = (tempo / 900) * 100;
+        progressoEl.style.width = `${porcentagem}%`;
 
         if (tempo < 0) {
           clearInterval(intervalo);
@@ -137,15 +164,10 @@
 
       document.getElementById("numero").textContent = numero;
       document.getElementById("cidadehora").textContent = `${cidade} – ${hora}`;
-
-      // Redirecionamento automático após 15s (urgência)
-      setTimeout(() => {
-        window.location.href = "https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba";
-      }, 15000);
     };
   </script>
 
-  <!-- HOTMART WIDGET (mantido) -->
+  <!-- HOTMART -->
   <script type="text/javascript">
     function importHotmart(){ 
       var imported = document.createElement('script'); 
@@ -197,12 +219,12 @@
     </div>
 
     <p class="contador">⏱️ Oferta expira em <span id="contador">15:00</span></p>
+    <div class="barra-progresso"><div id="progresso" class="progresso"></div></div>
 
-    <!-- BOTÃO DE CHECKOUT REAL FUNCIONAL -->
+    <!-- BOTÃO DE CHECKOUT HOTMART -->
     <a href="https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba" 
-       target="_blank" 
-       class="hotmart__button-checkout">
-      🔐 Ativar Proteção e Remover Golpes Agora
+       class="hotmart-fb hotmart__button-checkout">
+      🟢 Ativar Proteção Agora – Checkout Hotmart
     </a>
 
     <div class="selo-container">
