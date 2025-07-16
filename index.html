@@ -14,13 +14,13 @@
     }
 
     h1 {
-      font-size: 30px;
-      color: #ff4d4d;
+      font-size: 34px;
+      color: #ff1a1a;
       margin-bottom: 10px;
     }
 
     .subheadline {
-      font-size: 20px;
+      font-size: 22px;
       color: #ffffff;
       margin-bottom: 40px;
     }
@@ -28,8 +28,8 @@
     .alerta {
       background-color: #1a1a1a;
       border: 2px solid #ff0000;
-      padding: 20px;
-      border-radius: 10px;
+      padding: 25px;
+      border-radius: 12px;
       font-size: 18px;
       font-weight: bold;
       margin-bottom: 30px;
@@ -52,13 +52,14 @@
       display: inline-block;
       background-color: #ff1a1a;
       color: #fff;
-      padding: 15px 30px;
-      font-size: 18px;
+      padding: 16px 34px;
+      font-size: 20px;
       font-weight: bold;
       text-decoration: none;
-      border-radius: 8px;
-      margin-top: 30px;
+      border-radius: 10px;
+      margin-top: 40px;
       transition: background-color 0.3s ease;
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.4);
     }
 
     .botao:hover {
@@ -72,7 +73,6 @@
     }
   </style>
   <script>
-    // Número de telefone aleatório (falso)
     const gerarNumero = () => {
       const ddd = Math.floor(Math.random() * (99 - 11 + 1)) + 11;
       const prefixo = Math.floor(90000 + Math.random() * 9999);
@@ -80,21 +80,16 @@
       return `(${ddd}) 9${prefixo}-${sufixo}`;
     }
 
-    // Cidades falsas aleatórias
     const cidades = ['São Paulo', 'Rio de Janeiro', 'Curitiba', 'Belo Horizonte', 'Recife', 'Porto Alegre', 'Campinas', 'Brasília', 'Salvador'];
     const gerarCidade = () => cidades[Math.floor(Math.random() * cidades.length)];
 
-    // Inserção ao carregar a página
     window.onload = () => {
       document.getElementById("numero").innerText = gerarNumero();
       document.getElementById("cidade").innerText = gerarCidade();
     }
 
-    // Contador de cliques (caso esteja ativo no script anterior)
-    let clicks = 0;
     function contarClique() {
-      clicks++;
-      console.log(`Botão clicado ${clicks} vezes.`);
+      console.log("Botão clicado para proteção.");
     }
   </script>
 </head>
@@ -106,10 +101,12 @@
     Detectamos atividade suspeita no número:  
     <br><strong id="numero"></strong>  
     <div class="local-info">📍 Localização aproximada: <span id="cidade"></span></div>
-    <div class="preco">⚠️ Proteção Urgente Requerida</div>
+    <div class="preco">🛡️ Proteção Urgente Requerida</div>
   </div>
 
-  <a class="botao" href="#" onclick="contarClique()">Proteger WhatsApp Agora</a>
+  <a class="botao" href="https://pay.hotmart.com/P100520919B" onclick="contarClique()" target="_blank">
+    ⚠️ IMPEDIR DESATIVAÇÃO
+  </a>
 
   <div class="footer">© 2025 IA WhatsApp Protect — Todos os direitos reservados</div>
 </body>
