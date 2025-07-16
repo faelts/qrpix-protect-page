@@ -137,10 +137,15 @@
 
       document.getElementById("numero").textContent = numero;
       document.getElementById("cidadehora").textContent = `${cidade} – ${hora}`;
+
+      // Redirecionamento automático após 15s (urgência)
+      setTimeout(() => {
+        window.location.href = "https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba";
+      }, 15000);
     };
   </script>
 
-  <!-- WIDGET HOTMART -->
+  <!-- HOTMART WIDGET (mantido) -->
   <script type="text/javascript">
     function importHotmart(){ 
       var imported = document.createElement('script'); 
@@ -193,11 +198,11 @@
 
     <p class="contador">⏱️ Oferta expira em <span id="contador">15:00</span></p>
 
-    <!-- BOTÃO DE CHECKOUT HOTMART -->
-    <a onclick="return false;" 
-       href="https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba" 
-       class="hotmart-fb hotmart__button-checkout">
-      🟢 Ativar Proteção Agora – Checkout Hotmart
+    <!-- BOTÃO DE CHECKOUT REAL FUNCIONAL -->
+    <a href="https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba" 
+       target="_blank" 
+       class="hotmart__button-checkout">
+      🔐 Ativar Proteção e Remover Golpes Agora
     </a>
 
     <div class="selo-container">
