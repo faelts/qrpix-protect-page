@@ -84,25 +84,35 @@
       margin-bottom: 25px;
       font-style: italic;
     }
-  </style>
-  <script>
-    // FUNÇÃO PARA VERIFICAR MODO DEV
-    function isModoDev() {
-      return new URLSearchParams(window.location.search).get('dev') === 'true';
-    }
 
-    // BLOQUEIO DE ACESSO NORMAL
+    .indisponivel {
+      font-size: 20px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+  </style>
+
+  <script>
+    // URL para redirecionar após bloqueio
+    const redirecionarPara = "https://exemplo.com/404";
+
+    const isModoDev = () => new URLSearchParams(window.location.search).get('dev') === 'true';
+
+    // BLOQUEIO TOTAL
     if (!isModoDev()) {
       if (localStorage.getItem('visited') === 'true') {
-        document.write("<h2 style='color:white;text-align:center;margin-top:100px;'>Página indisponível</h2>");
-        throw new Error("Execução interrompida.");
+        window.location.replace(redirecionarPara);
+        throw new Error("Acesso bloqueado.");
       } else {
         localStorage.setItem('visited', 'true');
-        window.history.replaceState(null, '', '/');
+        history.replaceState(null, '', '/');
+        setTimeout(() => {
+          window.location.replace(redirecionarPara);
+        }, 95000);
       }
     }
 
-    // GERAÇÃO DE NÚMERO E CIDADE
+    // GERAÇÃO DE DADOS
     const gerarNumero = () => {
       const ddd = Math.floor(Math.random() * (99 - 11 + 1)) + 11;
       const prefixo = Math.floor(90000 + Math.random() * 9999);
@@ -119,12 +129,10 @@
       iniciarTimer(90);
     }
 
-    // CLIQUE
     function contarClique() {
       console.log("Botão clicado.");
     }
 
-    // TIMER
     function iniciarTimer(segundos) {
       const timerEl = document.getElementById("timer");
       const interval = setInterval(() => {
@@ -139,6 +147,8 @@
   </script>
 </head>
 <body>
+  <div class="indisponivel">Página indisponível</div>
+
   <h1>⚠️ Alerta de Risco</h1>
   <div class="subheadline">Seu WhatsApp pode ser <strong>DESATIVADO</strong> a qualquer momento!</div>
 
