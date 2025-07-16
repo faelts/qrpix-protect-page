@@ -1,167 +1,116 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <title>IA WhatsApp Protect – Alerta de Segurança</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <title>⚠️ Alerta: Seu WhatsApp está em Risco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      margin: 0;
-      padding: 0 20px;
+      background-color: #0d0d0d;
+      color: #fff;
       text-align: center;
-      color: #111;
+      padding: 40px 20px;
     }
 
-    .headline {
-      margin-top: 40px;
-      color: #c00;
-      font-weight: bold;
-    }
-
-    .headline h1 {
-      font-size: 26px;
+    h1 {
+      font-size: 30px;
+      color: #ff4d4d;
       margin-bottom: 10px;
     }
 
-    .headline h2 {
-      font-size: 22px;
-      color: #d00;
-      margin-top: 0;
+    .subheadline {
+      font-size: 20px;
+      color: #ffffff;
+      margin-bottom: 40px;
     }
 
     .alerta {
-      font-size: 16px;
-      color: #b30000;
-      margin-top: 15px;
+      background-color: #1a1a1a;
+      border: 2px solid #ff0000;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 18px;
       font-weight: bold;
-    }
-
-    .urgente {
-      background-color: #fff3cd;
-      color: #856404;
-      border: 1px solid #ffeeba;
-      padding: 15px;
-      margin: 25px auto;
-      max-width: 600px;
-      font-size: 15px;
+      margin-bottom: 30px;
     }
 
     .preco {
+      font-size: 22px;
+      color: #00cc66;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .local-info {
+      font-size: 16px;
+      margin-top: 10px;
+      color: #ccc;
+    }
+
+    .botao {
+      display: inline-block;
+      background-color: #ff1a1a;
+      color: #fff;
+      padding: 15px 30px;
       font-size: 18px;
       font-weight: bold;
-      color: #28a745;
-      margin-top: 25px;
-    }
-
-    .beneficios {
-      list-style: none;
-      padding: 0;
-      margin: 25px auto;
-      max-width: 600px;
-      font-size: 15px;
-      color: #111;
-      text-align: left;
-    }
-
-    .beneficios li {
-      margin-bottom: 10px;
-    }
-
-    .hotmart__button-checkout {
-      display: inline-block;
-      background-color: #28a745;
-      color: white;
-      padding: 15px 25px;
       text-decoration: none;
-      font-size: 16px;
-      font-weight: bold;
       border-radius: 8px;
-      margin-top: 25px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      margin-top: 30px;
+      transition: background-color 0.3s ease;
     }
 
-    .contador {
-      margin-top: 20px;
-      font-weight: bold;
-      color: #c00;
+    .botao:hover {
+      background-color: #e60000;
     }
 
-    #contador {
-      font-weight: bold;
+    .footer {
+      margin-top: 50px;
+      font-size: 12px;
+      color: #666;
     }
   </style>
+  <script>
+    // Número de telefone aleatório (falso)
+    const gerarNumero = () => {
+      const ddd = Math.floor(Math.random() * (99 - 11 + 1)) + 11;
+      const prefixo = Math.floor(90000 + Math.random() * 9999);
+      const sufixo = Math.floor(1000 + Math.random() * 8999);
+      return `(${ddd}) 9${prefixo}-${sufixo}`;
+    }
+
+    // Cidades falsas aleatórias
+    const cidades = ['São Paulo', 'Rio de Janeiro', 'Curitiba', 'Belo Horizonte', 'Recife', 'Porto Alegre', 'Campinas', 'Brasília', 'Salvador'];
+    const gerarCidade = () => cidades[Math.floor(Math.random() * cidades.length)];
+
+    // Inserção ao carregar a página
+    window.onload = () => {
+      document.getElementById("numero").innerText = gerarNumero();
+      document.getElementById("cidade").innerText = gerarCidade();
+    }
+
+    // Contador de cliques (caso esteja ativo no script anterior)
+    let clicks = 0;
+    function contarClique() {
+      clicks++;
+      console.log(`Botão clicado ${clicks} vezes.`);
+    }
+  </script>
 </head>
 <body>
+  <h1>⚠️ Alerta de Risco</h1>
+  <div class="subheadline">Seu WhatsApp pode ser <strong>DESATIVADO</strong> a qualquer momento!</div>
 
-  <div class="headline">
-    <h1>⚠️ ALERTA DE RISCO</h1>
-    <h2>Seu WhatsApp pode ser DESATIVADO!</h2>
+  <div class="alerta">
+    Detectamos atividade suspeita no número:  
+    <br><strong id="numero"></strong>  
+    <div class="local-info">📍 Localização aproximada: <span id="cidade"></span></div>
+    <div class="preco">⚠️ Proteção Urgente Requerida</div>
   </div>
 
-  <p class="alerta">
-    Atividade suspeita detectada: <span id="numero"></span><br />
-    Localização: <span id="local"></span> – <span id="hora"></span>
-  </p>
+  <a class="botao" href="#" onclick="contarClique()">Proteger WhatsApp Agora</a>
 
-  <div class="urgente">
-    🔴 Golpistas podem estar clonando seu número agora.<br />
-    ⛔ Sem proteção, sua conta pode ser invadida e bloqueada.
-  </div>
-
-  <div class="preco">
-    🛡️ Proteja-se agora por apenas <strong>R$ 4,90</strong>
-  </div>
-
-  <ul class="beneficios">
-    <li>✅ Escaneamento 24h com IA contra ameaças e golpes</li>
-    <li>✅ Bloqueio preventivo de invasores em tempo real</li>
-    <li>✅ Suporte emergencial com prioridade total</li>
-    <li>✅ Reembolso imediato se sua conta for comprometida</li>
-  </ul>
-
-  <a class="hotmart__button-checkout" href="https://pay.hotmart.com/P100520919B?checkoutMode=2&off=7kov1jba" target="_blank">
-    🔐 ATIVAR PROTEÇÃO AGORA
-  </a>
-
-  <div class="contador">
-    ⏰ Oferta expira em <span id="contador">14:59</span>
-  </div>
-
-  <script>
-    // Número aleatório
-    function gerarNumero() {
-      let ddd = ['11','21','31','41','51','61','71','81','85','91'];
-      let rddd = ddd[Math.floor(Math.random() * ddd.length)];
-      let n1 = Math.floor(90000 + Math.random() * 9999);
-      return `+55 ${rddd} ${n1.toString().slice(0, 5)}-****`;
-    }
-
-    // Cidades aleatórias
-    function gerarCidade() {
-      let cidades = ['São Paulo', 'Rio de Janeiro', 'Belo Horizonte', 'Curitiba', 'Salvador', 'Recife', 'Fortaleza', 'Brasília', 'Porto Alegre', 'Belém'];
-      return cidades[Math.floor(Math.random() * cidades.length)];
-    }
-
-    document.getElementById("numero").textContent = gerarNumero();
-    document.getElementById("local").textContent = gerarCidade();
-
-    // Hora atual
-    const data = new Date();
-    document.getElementById("hora").textContent = data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-
-    // Contador regressivo
-    let tempo = 14 * 60 + 59;
-    const contador = document.getElementById("contador");
-    setInterval(() => {
-      if (tempo <= 0) return;
-      tempo--;
-      const min = Math.floor(tempo / 60).toString().padStart(2, "0");
-      const seg = (tempo % 60).toString().padStart(2, "0");
-      contador.textContent = `${min}:${seg}`;
-    }, 1000);
-  </script>
-
+  <div class="footer">© 2025 IA WhatsApp Protect — Todos os direitos reservados</div>
 </body>
 </html>
